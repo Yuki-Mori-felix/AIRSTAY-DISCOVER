@@ -1,2 +1,2 @@
-# airstay
-イベント予約サイト【AIRSTAY】
+# AIRSTAY DISCOVER
+イベント予約サイト【AIRSTAY DISCOVER】
