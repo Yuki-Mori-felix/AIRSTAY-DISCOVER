@@ -77,7 +77,6 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
                 <?php get_template_part('partials/post-status', null, ['post_id' => get_the_ID()]); ?>
 
-                <?php get_template_part('partials/form-count-up'); ?>
               </li>
 
             <?php endwhile; ?>
