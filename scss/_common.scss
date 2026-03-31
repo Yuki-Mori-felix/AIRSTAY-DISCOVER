@@ -1,0 +1,791 @@
+// ブレイクポイント
+$pc: 1100px;
+$tab: 820px;
+$sp: 500px;
+
+@mixin pc {
+	@media screen and (max-width: ($pc)) {
+		@content;
+	}
+}
+
+@mixin tab {
+	@media screen and (max-width: ($tab)) {
+		@content;
+	}
+}
+
+@mixin sp {
+	@media screen and (max-width: ($sp)) {
+		@content;
+	}
+}
+
+body {
+	font-family:
+		"Noto Sans JP", sans-serif, "Segoe UI", Verdana, "游ゴシック", YuGothic,
+		"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+	line-height: 1.5;
+}
+.home {
+	background: #f0f0e7;
+}
+html {
+	color: #3e3e3e;
+}
+section {
+	padding-block: 40px 0;
+	max-width: 1920px;
+	margin-inline: auto;
+}
+.wrap {
+	max-width: 1100px;
+	margin: 0 auto;
+	width: 96%;
+	@include tab {
+		width: 100%;
+		padding-inline: 15px;
+	}
+}
+.page-title {
+	font-family: "Montserrat";
+	font-size: clamp(1.5rem, 0.983rem + 2.21vw, 2.5rem);
+	font-weight: 400;
+	padding-bottom: 30px;
+	margin-bottom: 50px;
+	border-bottom: 1px solid #909090;
+	@include tab {
+		padding-bottom: 15px;
+		margin-bottom: 30px;
+	}
+}
+.sec-title {
+	position: relative;
+	font-family: Montserrat;
+	font-weight: normal;
+	font-size: 34px;
+	text-align: center;
+	color: #333;
+	margin-bottom: 60px;
+	@include tab {
+		font-size: 22px;
+		color: #333;
+		margin-bottom: 45px;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: -20px;
+		transform: translateX(-50%);
+		width: 50px;
+		height: 1px;
+		background: #1d95d4;
+		@include tab {
+			bottom: -15px;
+		}
+	}
+}
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.common-button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 388px;
+	height: 92px;
+	margin-inline: auto;
+	background: #fff;
+	border: 1px solid #1d95d4;
+	transition: all 0.5s ease;
+	@include tab {
+		width: 285px;
+		height: 65px;
+	}
+
+	&:hover {
+		background: #1d95d4;
+		.text {
+			color: white;
+		}
+		&::after {
+			border-color: white;
+		}
+	}
+
+	&::after {
+		content: "";
+		width: 16px;
+		height: 16px;
+		border-top: solid 1px #909090;
+		border-right: solid 1px #909090;
+		position: absolute;
+		top: 38px;
+		right: 20px;
+		transform: rotate(45deg);
+		@include tab {
+			width: 8px;
+			height: 8px;
+			top: 28px;
+			right: 12px;
+		}
+	}
+
+	.text {
+		font-family: Montserrat;
+		font-weight: 500;
+		font-size: 18px;
+		text-align: center;
+		color: #333;
+		@include tab {
+			font-size: 16px;
+		}
+	}
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+	width: 100%;
+	border: 1px solid #5a5a5a;
+	border-radius: 5px;
+	line-height: 1.5;
+	padding: 5px;
+	font-size: 16px;
+	background: white;
+}
+select {
+	width: fit-content;
+}
+.back-button {
+	border: 1px solid #bbb;
+	background: #ddd;
+	color: #333;
+	max-width: 230px;
+	border-radius: 5px;
+	padding: 15px 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 20px;
+	display: block;
+	margin-inline: auto;
+	margin-top: 50px;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+.back-link {
+	display: block;
+	font-family: Montserrat;
+	font-weight: 500;
+	text-decoration: underline;
+	font-size: 16px;
+	text-align: center;
+	color: #333;
+	margin-top: 50px;
+	@include tab {
+		margin-top: 40px;
+	}
+}
+.login-error {
+	color: red;
+	font-size: 20px;
+	font-weight: 500;
+}
+.sp-visible {
+	display: none;
+	@include tab {
+		display: block;
+	}
+}
+.header_right-sp {
+	display: none;
+	@include tab {
+		display: block;
+	}
+}
+
+header {
+	position: fixed;
+	top: 0%;
+	width: 100%;
+	background: #1d95d4;
+	z-index: 99999;
+	height: 80px;
+	@include tab {
+		height: 63px;
+	}
+
+	.header-wrap {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px 20px;
+		max-width: 1680px;
+		margin: 0 auto;
+		height: 100%;
+		@include tab {
+			display: block;
+      padding: 15px;
+		}
+
+		.header-logo {
+			a {
+				font-family: Montserrat;
+				font-weight: bold;
+				font-size: 30px;
+				text-align: left;
+				color: #fff;
+				text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+				font-weight: 700;
+				@include tab {
+					font-size: 20px;
+				}
+        @include sp {
+          font-size: 17px;
+        }
+			}
+		}
+
+		.header-menu {
+			position: absolute;
+			right: 125px;
+			top: 0;
+			height: 100%;
+
+			ul {
+				display: flex;
+				gap: 10px;
+				height: 100%;
+
+				li {
+					position: relative;
+					width: 90px;
+					height: 100%;
+					background-color: white;
+					border: 2px solid #1d95d4;
+					color: white;
+					@include tab {
+						display: none;
+						width: 56px;
+					}
+					&:nth-child(1) {
+						img {
+							width: 35px;
+							height: 25px;
+						}
+					}
+					&:nth-child(2) {
+						img {
+							width: 22px;
+							height: 27px;
+						}
+					}
+					&:nth-child(3) {
+						@include tab {
+							display: block;
+						}
+					}
+					&:hover {
+						background-color: #1d95d4;
+
+						.header-menu-img {
+							display: none;
+						}
+
+						.header-menu-img-hover {
+							display: block;
+						}
+
+						p {
+							color: white;
+						}
+
+						.sp-menu-button {
+							& > span {
+								.icon {
+									.bar {
+										color: white;
+									}
+								}
+							}
+						}
+					}
+
+					a {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						gap: 5px;
+						height: 100%;
+						width: 100%;
+
+						.header-menu-img-hover {
+							display: none;
+						}
+
+						p {
+							font-size: 14px;
+							color: #1d95d4;
+							@include tab {
+								font-size: 12px;
+							}
+						}
+					}
+
+					.sp-menu-button {
+						& > span {
+							display: block;
+							width: 100%;
+							.icon {
+								display: flex;
+								height: 20px;
+								margin-bottom: 1px;
+								margin-left: auto;
+								margin-right: auto;
+								max-width: 26px;
+								@include sp {
+									margin-top: 5px;
+								}
+
+								.bar {
+									display: block;
+									height: 100%;
+									position: relative;
+									width: 100%;
+									color: #1d95d4;
+									&::before,
+									&::after,
+									span {
+										border-bottom: 1px solid;
+										content: "";
+										display: block;
+										left: 0;
+										margin-top: -1px;
+										position: absolute;
+										width: 100%;
+									}
+									&::before,
+									&::after {
+										transition:
+											top 0.3s,
+											transform 0.3s;
+									}
+									&::before {
+										top: 0%;
+									}
+									span {
+										top: 50%;
+									}
+									&::after {
+										top: 100%;
+									}
+								}
+							}
+						}
+
+						&.is-act {
+							& > span {
+								.icon {
+									.bar {
+										&::before {
+											top: 50%;
+											transform: rotate(-45deg);
+										}
+										&::after {
+											top: 50%;
+											transform: rotate(45deg);
+										}
+										span {
+											opacity: 0;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					.header-menu-search {
+						position: absolute;
+						bottom: -80px;
+						right: -2px;
+						background: #1d95d4;
+						padding: 10px;
+						width: 470px;
+						display: none;
+						opacity: 0;
+
+						.search-box {
+							position: relative;
+
+							input {
+								color: black;
+								padding: 16px;
+							}
+
+							button {
+								font-size: 16px;
+								padding: 0;
+								position: absolute;
+								top: 15px;
+								right: 15px;
+								cursor: pointer;
+								background: #1d95d4;
+								color: white;
+								width: 90px;
+								height: 30px;
+								border-radius: 20px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.home header {
+	background: transparent;
+}
+
+.sp-nav {
+	font-size: calc(1.23267vw + 1.13775rem);
+	height: 0;
+	overflow: hidden;
+	padding-top: 80px;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transition: height 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+	width: 100%;
+	z-index: 5000;
+	background-color: transparent;
+	@include tab {
+		padding-top: 63px;
+	}
+	&.is-act {
+		height: 100%;
+	}
+
+	.sp-nav-container {
+		height: 100%;
+		max-height: 100%;
+		overflow-y: auto;
+		padding-bottom: calc(6.16333vw + 96.88752px);
+		padding-top: 80px;
+		background: white;
+
+		.sp-nav-list {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: calc(73.95994vw - 37.34977px);
+			width: 100%;
+			@include sp {
+				max-width: 80%;
+			}
+
+			.sp-nav-item {
+				font-family: Montserrat;
+				color: #333;
+				border-bottom: 1px solid #909090;
+				padding-bottom: 20px;
+				margin-bottom: 20px;
+				@include tab {
+					font-size: 18px;
+				}
+
+				h3 {
+					position: relative;
+					&::after {
+						content: "";
+						width: 10px;
+						height: 10px;
+						border-top: solid 2px #909090;
+						border-right: solid 2px #909090;
+						position: absolute;
+						right: 5px;
+						top: 50%;
+						transform: translateY(-50%) rotate(45deg);
+					}
+
+          a {
+            display: block;
+          }
+				}
+			}
+		}
+
+		.sp-nav-search {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: calc(73.95994vw - 37.34977px);
+			width: 100%;
+			@include sp {
+				max-width: 80%;
+			}
+
+			.search-box {
+				input {
+					font-size: 20px;
+					border: 2px solid #1d95d4;
+					margin-bottom: 20px;
+					padding: 16px 70px;
+					@include tab {
+						padding: 16px 20px;
+						font-size: 16px;
+					}
+					&::placeholder {
+						color: #b5b5b5;
+					}
+				}
+
+				button {
+					border-radius: 40px;
+					font-size: 20px;
+					font-weight: 400;
+					background: #1d95d4;
+					@include tab {
+						font-size: 16px;
+						padding: 6px 20px 5px;
+						width: fit-content;
+					}
+				}
+			}
+		}
+	}
+}
+/*======================= END OF HEADER =======================*/
+
+.breadcrumb-area {
+	background: #f0f0e7;
+
+	.breadcrumb {
+		max-width: 1;
+		display: flex;
+		padding: 10px 20px;
+		max-width: 1680px;
+		margin-inline: auto;
+		height: 100%;
+		@include tab {
+			padding: 5px 10px;
+		}
+
+		a,
+		span {
+			font-family: Montserrat;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 24px;
+			text-align: left;
+			color: #333;
+			margin-right: 10px;
+			@include tab {
+				font-size: 13px;
+				margin-right: 5px;
+			}
+		}
+
+		a {
+			text-decoration: underline;
+			&:not(:first-child) {
+				margin-left: 10px;
+				@include tab {
+					margin-left: 5px;
+				}
+			}
+		}
+
+		span {
+			margin-left: 10px;
+			@include tab {
+				margin-left: 5px;
+			}
+		}
+	}
+}
+/*======================= END OF breadcrumbs =======================*/
+
+.create-buttons {
+	font-size: 16px;
+	position: fixed;
+	right: 1px;
+	bottom: 10%;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	@include sp {
+		font-size: 12px;
+		top: 60px;
+		gap: 2px;
+	}
+
+	.create-button {
+		text-align: center;
+		padding: 12px 20px;
+		background: #0073aa;
+		color: #fff;
+		border-radius: 5px;
+		&:hover {
+			background: #005f8d;
+		}
+		@include sp {
+			padding: 8px 10px;
+		}
+	}
+
+	.logout-button {
+		background: #ff4444;
+		color: white;
+		padding: 12px 20px;
+		border-radius: 5px;
+		text-align: center;
+		&:hover {
+			background: #ff3333;
+		}
+		@include sp {
+			padding: 8px 10px;
+		}
+	}
+}
+
+/*______________ ページネーション ______________*/
+.pagenate-area {
+	margin-top: 100px;
+
+	.page-numbers {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		&.current {
+			color: #fff;
+			background-color: #1d95d4;
+		}
+
+		li {
+			a,
+			span {
+				border: 1px solid #1d95d4;
+				padding: 15px 21px;
+			}
+
+			&:hover {
+				background: #f0f0e7;
+			}
+		}
+	}
+}
+/*______________ ページネーション ______________*/
+
+.count-area {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin-block: 10px;
+	.count-title {
+		font-weight: 500;
+	}
+}
+
+footer {
+	background: #1d95d4;
+	max-width: 1920px;
+	margin-inline: auto;
+	.footer-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: 60px;
+		gap: 80px;
+		@include tab {
+			align-items: flex-start;
+      justify-content: center;
+		}
+
+		.footer-logo {
+			font-family: Montserrat;
+			font-weight: bold;
+			font-size: 24px;
+			text-align: left;
+			color: #fff;
+			@include tab {
+				font-size: 20px;
+			}
+		}
+		.footer-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 30px;
+			@include tab {
+				gap: 15px;
+			}
+			@include sp {
+				flex-direction: column;
+			}
+
+			.footer-item {
+				font-family: Montserrat;
+				text-decoration: underline;
+				font-size: 15px;
+				line-height: 24px;
+				color: #fff;
+				&:last-child {
+					width: fit-content;
+				}
+			}
+		}
+	}
+	.copy-right {
+		background: #187fb5;
+		padding-block: 5px;
+		p {
+			font-size: 14px;
+			color: white;
+			text-align: right;
+			@include tab {
+				font-size: 11px;
+			}
+		}
+	}
+}
+
+.editor-mode {
+	.form-item {
+		border-bottom: 2px dashed #ddd;
+		padding-bottom: 40px;
+	}
+}
+
+/*______________ レビュープラグイン ______________*/
+.glsr-default {
+  
+  .glsr-form-wrap {
+    margin-top: 50px;
+
+    .glsr-field {
+
+      .glsr-label {
+        font-size: 20px;
+      }    
+    }
+
+    .wp-block-buttons {
+      width: fit-content;
+      margin-inline: auto;
+      margin-top: 20px;
+      button {
+        display: block;
+        justify-content: center;
+      }
+    }
+  }
+}
+/*______________ レビュープラグイン ______________*/

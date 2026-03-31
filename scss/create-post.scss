@@ -1,0 +1,72 @@
+@use "./_common" as *;
+
+.editor-home {
+	.editor-home-text {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+	.select-post-type {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		a {
+			display: inline-block;
+			width: 100%;
+			max-width: 240px;
+			text-align: center;
+			background: #0073aa;
+			color: #fff;
+			border-radius: 5px;
+			padding: 12px 20px;
+			&:hover {
+				background: #005f8d;
+			}
+		}
+	}
+}
+
+.form-item {
+	display: grid;
+	grid-template-columns: 1fr;
+	margin-bottom: 20px;
+	&:last-of-type {
+		margin-bottom: 50px;
+	}
+
+	label {
+		font-size: 24px;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+}
+
+button {
+	display: block;
+	color: white;
+	background: #252631;
+	padding: 20px;
+	width: 300px;
+	text-align: center;
+	border-radius: 5px;
+	margin-inline: auto;
+	font-size: 20px;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.upload-area {
+	border: 2px dashed #aaa;
+	padding: 20px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 8px;
+	transition: 0.3s;
+}
+
+.upload-area.dragover {
+	border-color: #4caf50;
+	background: #f0fff0;
+}

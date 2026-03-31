@@ -1,0 +1,33 @@
+@use "./_common" as *;
+
+/*______________ 編集者ログイン画面 ______________*/
+.password-wrap {
+	position: relative;
+}
+
+#toggle-password {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: fit-content;
+	height: 100%;
+	background: black;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+.fa-eye,
+.fa-eye-slash {
+	color: #707070;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: fit-content;
+	height: fit-content;
+}
+.fa-eye-slash {
+	display: none;
+	right: 8px;
+}
