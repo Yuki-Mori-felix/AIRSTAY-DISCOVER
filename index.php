@@ -44,37 +44,37 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         <h2 class="sec-title">Popular Categories</h2>
         <ul class="category-list">
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=adventure">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=10&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category.png" alt="">
               <div class="category-name">Adventure & Sports</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=history">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=19&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-02.png" alt="">
               <div class="category-name">History & Architecture</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=nature">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=20&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-03.png" alt="">
               <div class="category-name">Nature & Outdoors</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=craftsmanship">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=21&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-04.png" alt="">
               <div class="category-name">Art & Craftsmanship</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=drink authentic">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=22&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-05.png" alt="">
               <div class="category-name">Eat & Drink Authentic</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>?s=local lifestyle">
+            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=23&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-06.png" alt="">
               <div class="category-name">Local Lifestyle & Etiquette</div>
             </a>
