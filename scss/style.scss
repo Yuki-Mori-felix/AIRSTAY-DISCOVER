@@ -421,6 +421,18 @@ section {
 
 .sec-event-list {
   min-height: 80vh;
+
+  .sort-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 3px;
+
+    .current {
+      color: #1d95d4;
+    }
+  }
 }
 
 .event-list {

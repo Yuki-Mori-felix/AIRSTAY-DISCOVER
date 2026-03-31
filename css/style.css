@@ -2260,6 +2260,22 @@ section {
 .sec-event-list {
   min-height: 80vh;
 }
+.sec-event-list .sort-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 3px;
+}
+.sec-event-list .sort-area .current {
+  color: #1d95d4;
+}
 
 .event-list {
   display: grid;
