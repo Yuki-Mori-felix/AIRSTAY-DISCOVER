@@ -138,6 +138,11 @@ get_header();
           <textarea name="event_text" rows="15" required></textarea>
         </div>
 
+        <div class="form-item">
+          <label>所要時間（分）</label>
+          <input type="number" name="time_required" min="1" step="1" placeholder="例：120">
+        </div>
+
         <!-- ▼ 追加項目：タイムスケジュール -->
         <div class="form-item">
           <label>タイムスケジュール</label>

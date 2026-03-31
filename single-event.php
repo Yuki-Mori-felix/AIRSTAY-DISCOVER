@@ -119,6 +119,10 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         update_post_meta($post_id, 'event_text', sanitize_textarea_field($_POST['event_text']));
       }
 
+      if (isset($_POST['time_required'])) {
+        update_post_meta($post_id, 'time_required', intval($_POST['time_required']));
+      }
+
       if (!empty($_POST['event_time_schedule'])) {
         update_post_meta($post_id, 'event_time_schedule', sanitize_textarea_field($_POST['event_time_schedule']));
       }
@@ -171,7 +175,6 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 Featured Experiences に設定する
               </label>
             </div>
-
 
             <div class="form-item">
               <label>URL（スラッグ）</label>
@@ -263,6 +266,12 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             <div class="form-item">
               <label>イベント詳細文</label>
               <textarea name="event_text" rows="15" required><?= esc_textarea(get_post_meta(get_the_ID(), 'event_text', true)); ?></textarea>
+            </div>
+
+            <div class="form-item">
+              <label>所要時間（分）</label>
+              <input type="number" name="time_required" min="1" step="1" placeholder="例：120"
+                value="<?= esc_attr(get_post_meta(get_the_ID(), 'time_required', true)); ?>">
             </div>
 
             <div class="form-item">
@@ -360,6 +369,9 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             </div>
 
             <div class="text-area">
+              <?php $time = get_field('time_required'); ?>
+              <p class="duration">所要時間：<?= esc_html($time); ?> 分</p>
+
               <?php
               $text = get_post_meta(get_the_ID(), 'event_text', true);
               if (!empty($text)):

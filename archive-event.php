@@ -73,6 +73,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   </div>
                   <div class="list-text"><?= the_field('event_text'); ?></div>
                   <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
+                  <div class="time_required"><?= the_field('time_required'); ?> 分</div>
                 </a>
 
                 <?php get_template_part('partials/post-status', null, ['post_id' => get_the_ID()]); ?>
