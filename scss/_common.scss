@@ -1,25 +1,3 @@
-// ブレイクポイント
-$pc: 1100px;
-$tab: 820px;
-$sp: 500px;
-
-@mixin pc {
-	@media screen and (max-width: ($pc)) {
-		@content;
-	}
-}
-
-@mixin tab {
-	@media screen and (max-width: ($tab)) {
-		@content;
-	}
-}
-
-@mixin sp {
-	@media screen and (max-width: ($sp)) {
-		@content;
-	}
-}
 
 body {
 	font-family:
@@ -257,9 +235,12 @@ header {
 
 		.header-menu {
 			position: absolute;
-			right: 125px;
+			right: 0;
 			top: 0;
 			height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
 
 			ul {
 				display: flex;
@@ -449,6 +430,12 @@ header {
 					}
 				}
 			}
+      
+      .linguise_switcher_dropdown {
+        li {
+          border: none;
+        }
+      }
 		}
 	}
 }

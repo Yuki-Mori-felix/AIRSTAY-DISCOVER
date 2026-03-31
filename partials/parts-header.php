@@ -47,6 +47,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
           </a>
         </li>
       </ul>
+      <div class="language"><?php echo do_shortcode('[linguise]'); ?></div>
     </div>
   </div>
 </header>
