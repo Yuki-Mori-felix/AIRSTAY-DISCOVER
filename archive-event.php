@@ -27,17 +27,47 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         $allowed_sorts = ['new', 'price', 'time'];
         $sort = isset($_GET['sort']) && in_array($_GET['sort'], $allowed_sorts, true) ? sanitize_text_field($_GET['sort']) : 'new';
 
+        $selected_types = isset($_GET['filter_type']) ? array_map('intval', (array) $_GET['filter_type']) : [];
+        $type_terms = get_terms([
+          'taxonomy'   => 'type',
+          'hide_empty' => false,
+        ]);
+
         $sort_labels = [
           'new'   => '新着順',
           'price' => '安い順',
           'time'  => '所要時間の短い順',
         ];
+
+        $current_filter_args = [];
+        if (!empty($selected_types)) {
+          $current_filter_args['filter_type'] = $selected_types;
+        }
         ?>
+
+        <div class="filter-area">
+          <form method="get" action="<?php echo esc_url(remove_query_arg('paged')); ?>">
+            <div class="filter-heading">カテゴリ</div>
+            <?php if (!empty($type_terms) && !is_wp_error($type_terms)): ?>
+              <div class="filter-checkboxes">
+                <?php foreach ($type_terms as $term): ?>
+                  <label>
+                    <input type="checkbox" name="filter_type[]" value="<?php echo esc_attr($term->term_id); ?>"
+                      <?php echo in_array($term->term_id, $selected_types, true) ? 'checked' : ''; ?> />
+                    <?php echo esc_html($term->name); ?>
+                  </label>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+            <input type="hidden" name="sort" value="<?php echo esc_attr($sort); ?>" />
+            <button type="submit" class="filter-button">検索結果を表示</button>
+          </form>
+        </div>
 
         <div class="sort-area">
           <?php foreach ($sort_labels as $sort_key => $sort_label): ?>
             <a class="sort-link<?php echo $sort === $sort_key ? ' current' : ''; ?>"
-              href="<?php echo esc_url(add_query_arg(['sort' => $sort_key, 'paged' => 1])); ?>">
+              href="<?php echo esc_url(add_query_arg(array_merge(['sort' => $sort_key, 'paged' => 1], $current_filter_args))); ?>">
               <?php echo esc_html($sort_label); ?>
             </a>
             <?php if ($sort_key !== array_key_last($sort_labels)): ?>
@@ -52,6 +82,16 @@ require TEMPLATEPATH . '/inc/my_variables.php';
           'posts_per_page' => 15,   // ← ★ここで1ページあたりの表示数を自由に変更
           'paged'          => $paged,
         ];
+
+        if (!empty($selected_types)) {
+          $args['tax_query'] = [
+            [
+              'taxonomy' => 'type',
+              'field'    => 'term_id',
+              'terms'    => $selected_types,
+            ],
+          ];
+        }
 
         switch ($sort) {
           case 'price':
@@ -129,13 +169,18 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             $big = 999999999; // 何でも良いダミー値
             $pagination_base = str_replace($big, '%#%', esc_url(get_pagenum_link($big)));
 
+            $pagination_add_args = ['sort' => $sort];
+            if (!empty($selected_types)) {
+              $pagination_add_args['filter_type'] = $selected_types;
+            }
+
             $pagination_links = paginate_links([
               'base'      => $pagination_base,
               'format'    => 'page/%#%/',
               'current'   => max(1, $paged),
               'total'     => $query->max_num_pages,
               'type'      => 'array',
-              'add_args'  => ['sort' => $sort],
+              'add_args'  => $pagination_add_args,
               'prev_text' => '&laquo;',
               'next_text' => '&raquo;',
             ]);
@@ -145,7 +190,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
               // ▼ First（最初のページ）
               if ($paged > 1) {
-                echo '<li><a class="first page-numbers" href="' . esc_url(add_query_arg(['sort' => $sort, 'paged' => 1], get_pagenum_link(1))) . '">First</a></li>';
+                echo '<li><a class="first page-numbers" href="' . esc_url(add_query_arg(array_merge(['sort' => $sort, 'paged' => 1], $current_filter_args), get_pagenum_link(1))) . '">First</a></li>';
               }
 
               // ▼ 通常のページネーションリンク
@@ -155,7 +200,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
               // ▼ Last（最後のページ）
               if ($paged < $query->max_num_pages) {
-                echo '<li><a class="last page-numbers" href="' . esc_url(add_query_arg(['sort' => $sort, 'paged' => $query->max_num_pages], get_pagenum_link($query->max_num_pages))) . '">Last</a></li>';
+                echo '<li><a class="last page-numbers" href="' . esc_url(add_query_arg(array_merge(['sort' => $sort, 'paged' => $query->max_num_pages], $current_filter_args), get_pagenum_link($query->max_num_pages))) . '">Last</a></li>';
               }
 
               echo '</ul>';
@@ -166,6 +211,8 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
           <?php wp_reset_postdata(); ?>
 
+        <?php else: ?>
+          <div class="no-results-message">No experiences matched your search.</div>
         <?php endif; ?>
       </div>
     </section>

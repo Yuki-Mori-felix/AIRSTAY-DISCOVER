@@ -2260,6 +2260,32 @@ section {
 .sec-event-list {
   min-height: 80vh;
 }
+.sec-event-list .filter-area {
+  margin-bottom: 30px;
+}
+.sec-event-list .filter-area .filter-heading {
+  font-size: 18px;
+  font-weight: 600;
+}
+.sec-event-list .filter-area .filter-checkboxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  row-gap: 5px;
+  margin-bottom: 30px;
+}
+.sec-event-list .filter-area .filter-checkboxes label {
+  width: 30%;
+}
+.sec-event-list .filter-area .filter-button {
+  background: #1d95d4;
+  padding: 5px 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .sec-event-list .sort-area {
   display: -webkit-box;
   display: -ms-flexbox;
