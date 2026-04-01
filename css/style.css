@@ -2266,6 +2266,7 @@ section {
 .sec-event-list .filter-area .filter-heading {
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 .sec-event-list .filter-area .filter-checkboxes {
   display: -webkit-box;
@@ -2273,11 +2274,56 @@ section {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  row-gap: 5px;
+  gap: 10px;
   margin-bottom: 30px;
 }
-.sec-event-list .filter-area .filter-checkboxes label {
+.sec-event-list .filter-area .filter-checkboxes .filter-option {
   width: 30%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 120px;
+  border: 1px solid #d9d9d9;
+  border-radius: 30px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.sec-event-list .filter-area .filter-checkboxes .filter-option input {
+  display: none;
+}
+.sec-event-list .filter-area .filter-checkboxes .filter-option-text {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 30px;
+  color: #333;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sec-event-list .filter-area .filter-checkboxes .filter-option input:checked + .filter-option-text {
+  background: #1d95d4;
+  color: #fff;
+  border-color: #1d95d4;
+}
+.sec-event-list .filter-area .filter-checkboxes .filter-option input:checked + .filter-option-text {
+  background: #1d95d4;
+  color: #fff;
 }
 .sec-event-list .filter-area .filter-button {
   background: #1d95d4;
@@ -2285,6 +2331,9 @@ section {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 .sec-event-list .sort-area {
   display: -webkit-box;
@@ -2297,7 +2346,7 @@ section {
       -ms-flex-align: start;
           align-items: flex-start;
   margin-bottom: 20px;
-  gap: 3px;
+  gap: 10px;
 }
 .sec-event-list .sort-area .current {
   color: #1d95d4;

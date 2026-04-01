@@ -428,16 +428,52 @@ section {
     .filter-heading {
       font-size: 18px;
       font-weight: 600;
+      margin-bottom: 10px;
     }
 
     .filter-checkboxes {
       display: flex;
       flex-wrap: wrap;
-      row-gap: 5px;
+      gap: 10px;
       margin-bottom: 30px;
 
-      label {
+      .filter-option {
         width: 30%;
+        display: inline-flex;
+        align-items: stretch;
+        justify-content: center;
+        min-width: 120px;
+        border: 1px solid #d9d9d9;
+        border-radius: 30px;
+        background: #fff;
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+      }
+
+      .filter-option input {
+        display: none;
+      }
+
+      .filter-option-text {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 30px;
+        color: #333;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .filter-option input:checked + .filter-option-text {
+        background: #1d95d4;
+        color: #fff;
+        border-color: #1d95d4;
+      }
+
+      .filter-option input:checked + .filter-option-text {
+        background: #1d95d4;
+        color: #fff;
       }
     }
 
@@ -445,6 +481,9 @@ section {
       background: #1d95d4;
       padding: 5px 10px;
       width: fit-content;
+      color: #fff;
+      border: none;
+      cursor: pointer;
     }
   }
 
@@ -453,7 +492,7 @@ section {
     justify-content: flex-end;
     align-items: flex-start;
     margin-bottom: 20px;
-    gap: 3px;
+    gap: 10px;
 
     .current {
       color: #1d95d4;

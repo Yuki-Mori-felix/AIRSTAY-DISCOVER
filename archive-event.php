@@ -51,10 +51,10 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             <?php if (!empty($type_terms) && !is_wp_error($type_terms)): ?>
               <div class="filter-checkboxes">
                 <?php foreach ($type_terms as $term): ?>
-                  <label>
+                  <label class="filter-option">
                     <input type="checkbox" name="filter_type[]" value="<?php echo esc_attr($term->term_id); ?>"
                       <?php echo in_array($term->term_id, $selected_types, true) ? 'checked' : ''; ?> />
-                    <?php echo esc_html($term->name); ?>
+                    <span class="filter-option-text"><?php echo esc_html($term->name); ?></span>
                   </label>
                 <?php endforeach; ?>
               </div>
