@@ -218,7 +218,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
               <div style="margin-top:10px;">
                 <label>新しい体験種類を追加</label>
-                <input type="text" name="event_type_new" placeholder="例：Cultural tours">
+                <input type="text" name="event_type_new" placeholder="例：Cultural Experiences">
               </div>
             </div>
 
@@ -452,7 +452,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
     <?php endif; ?>
 
-    <a href="<?= $home_url ?>/event/" class="back-link">Back to All Tours</a>
+    <a href="<?= $home_url ?>/event/" class="back-link">Back to All Experiences</a>
     </div>
     </section>
 

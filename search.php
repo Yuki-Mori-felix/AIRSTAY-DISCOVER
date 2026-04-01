@@ -63,7 +63,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
           <p>No events matched your search.</p>
         <?php endif; ?>
 
-        <a href="<?= home_url(); ?>/event/" class="back-link">Back to All Tours</a>
+        <a href="<?= home_url(); ?>/event/" class="back-link">Back to All Experiences</a>
       </div>
     </section>
   </main>

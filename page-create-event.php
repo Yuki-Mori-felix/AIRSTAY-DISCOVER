@@ -97,7 +97,7 @@ get_header();
 
           <div style="margin-top:10px;">
             <label>新しい体験種類を追加</label>
-            <input type="text" name="event_type_new" placeholder="例：Cultural tours">
+            <input type="text" name="event_type_new" placeholder="例：Cultural Experiences">
           </div>
         </div>
 
