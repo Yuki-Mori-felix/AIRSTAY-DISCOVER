@@ -217,10 +217,17 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                           if (mb_strlen($title) > $limit) {
                             $title = mb_substr($title, 0, $limit) . '...';
                           }
+
+                          $event_text = get_field('event_text');
+                          $text_limit = 200;
+
+                          if (mb_strlen($event_text) > $text_limit) {
+                            $event_text = mb_substr($event_text, 0, $text_limit) . '...';
+                          }
                           ?>
                           <div class="list-title"><?= $title; ?></div>
 
-                          <div class="list-text"><?= the_field('event_text'); ?></div>
+                          <div class="list-text"><?= wp_kses($event_text, array('br' => array())); ?></div>
 
                           <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
                         </div>
@@ -304,10 +311,17 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   if (mb_strlen($title) > $limit) {
                     $title = mb_substr($title, 0, $limit) . '...';
                   }
+
+                  $event_text = get_field('event_text');
+                  $text_limit = 200;
+
+                  if (mb_strlen($event_text) > $text_limit) {
+                    $event_text = mb_substr($event_text, 0, $text_limit) . '...';
+                  }
                   ?>
                   <div class="list-title"><?= $title; ?></div>
 
-                  <div class="list-text"><?= the_field('event_text'); ?></div>
+                  <div class="list-text"><?= wp_kses($event_text, array('br' => array())); ?></div>
 
                   <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
 

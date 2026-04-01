@@ -152,7 +152,15 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   <div class="list-title">
                     <?= the_title(); ?>
                   </div>
-                  <div class="list-text"><?= the_field('event_text'); ?></div>
+                  <?php
+                  $event_text = get_field('event_text');
+                  $text_limit = 200;
+
+                  if (mb_strlen($event_text) > $text_limit) {
+                    $event_text = mb_substr($event_text, 0, $text_limit) . '...';
+                  }
+                  ?>
+                  <div class="list-text"><?= wp_kses($event_text, array('br' => array())); ?></div>
                   <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
                   <div class="time_required"><?= the_field('time_required'); ?> 分</div>
                 </a>
