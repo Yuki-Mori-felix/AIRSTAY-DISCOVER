@@ -5,6 +5,12 @@ include TEMPLATEPATH . '/inc/my_variables.php';
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Favicon and Icons -->
+<link rel="icon" href="<?= $img_path ?>/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="<?= $img_path ?>/apple-touch-icon.png">
+<link rel="icon" sizes="192x192" href="<?= $img_path ?>/android-chrome-192×192.png">
+<!-- Open Graph Image -->
+<meta property="og:image" content="<?= $img_path ?>/ogp.png">
 <title>
   <?php if(is_post_type_archive('event')): ?>
     AIRSTAY DISCOVER | Experiences
@@ -14,8 +20,8 @@ include TEMPLATEPATH . '/inc/my_variables.php';
     AIRSTAY DISCOVER
   <?php endif; ?>
 </title>
-<meta name="keywords" content="">
-<meta name="description" content="AIRSTAY DISCOVER">
+<meta name="keywords" content="AIRSTAY, DISCOVER, experiences, events, booking, travel">
+<meta name="description" content="AIRSTAY DISCOVER - Discover unique experiences and events with AIRSTAY. Book your next adventure today.">
 <!-- Google Fonts 読み込み -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
