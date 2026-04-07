@@ -154,7 +154,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   </div>
                   <?php
                   $event_text = get_field('event_text');
-                  $text_limit = 200;
+                  $text_limit = 140;
 
                   if (mb_strlen($event_text) > $text_limit) {
                     $event_text = mb_substr($event_text, 0, $text_limit) . '...';
@@ -162,7 +162,26 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   ?>
                   <div class="list-text"><?= wp_kses($event_text, array('br' => array())); ?></div>
                   <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
-                  <div class="time_required"><?= the_field('time_required'); ?> 分</div>
+                  <ul class="filter-list">
+                    <?php if (get_post_meta(get_the_ID(), 'capacity', true)): ?>
+                      <li class="filter-item"><?= get_post_meta(get_the_ID(), 'capacity', true); ?> 人</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'time_required', true)): ?>
+                      <li class="filter-item"><?= get_post_meta(get_the_ID(), 'time_required', true); ?> 分</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'english_supported', true) == 1): ?>
+                      <li class="filter-item">英語対応</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'kid_friendly', true) == 1): ?>
+                      <li class="filter-item">子連れ可</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'group_booking', true) == 1): ?>
+                      <li class="filter-item">グループ貸切可</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'except_tokyo', true) == 1): ?>
+                      <li class="filter-item">東京以外</li>
+                    <?php endif; ?>
+                  </ul>
                 </a>
 
                 <?php get_template_part('partials/post-status', null, ['post_id' => get_the_ID()]); ?>
