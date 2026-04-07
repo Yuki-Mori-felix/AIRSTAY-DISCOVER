@@ -2276,6 +2276,9 @@ section {
 .sec-event-list {
   min-height: 80vh;
 }
+.sec-event-list .page-title {
+  margin-bottom: 20px;
+}
 .sec-event-list .filter-area {
   margin-bottom: 30px;
 }
@@ -2351,7 +2354,88 @@ section {
   border: none;
   cursor: pointer;
 }
-.sec-event-list .sort-area {
+.sec-event-list .filter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.sec-event-list .filter-modal .filter-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.sec-event-list .filter-modal .filter-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 2;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.sec-event-list .filter-modal .filter-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  z-index: 3;
+}
+.sec-event-list .filter-modal .filter-close-button:hover {
+  color: #333;
+}
+.sec-event-list .flex-filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+.sec-event-list .flex-filters .filter-toggle-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid #1d95d4;
+  padding: 5px 10px;
+}
+.sec-event-list .flex-filters .filter-toggle-button svg {
+  width: 20px;
+  height: 20px;
+}
+.sec-event-list .flex-filters .sort-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2361,10 +2445,9 @@ section {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin-bottom: 20px;
   gap: 10px;
 }
-.sec-event-list .sort-area .current {
+.sec-event-list .flex-filters .sort-area .current {
   color: #1d95d4;
 }
 

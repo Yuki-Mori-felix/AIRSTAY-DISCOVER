@@ -67,108 +67,121 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         }
         ?>
 
-        <div class="filter-area">
-          <form method="get" action="<?php echo esc_url(remove_query_arg('paged')); ?>">
-            <div class="filter-heading">カテゴリ</div>
-            <?php if (!empty($type_terms) && !is_wp_error($type_terms)): ?>
+        <div class="filter-area filter-modal" style="display: none;">
+          <div class="filter-modal-overlay"></div>
+          <div class="filter-modal-content">
+            <span type="button" class="filter-close-button">&times;</span>
+            <form method="get" action="<?php echo esc_url(remove_query_arg('paged')); ?>">
+              <div class="filter-heading">カテゴリ</div>
+              <?php if (!empty($type_terms) && !is_wp_error($type_terms)): ?>
+                <div class="filter-checkboxes">
+                  <?php foreach ($type_terms as $term): ?>
+                    <label class="filter-option">
+                      <input type="checkbox" name="filter_type[]" value="<?php echo esc_attr($term->term_id); ?>"
+                        <?php echo in_array($term->term_id, $selected_types, true) ? 'checked' : ''; ?> />
+                      <span class="filter-option-text"><?php echo esc_html($term->name); ?></span>
+                    </label>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
+
+              <div class="filter-heading">オプション</div>
               <div class="filter-checkboxes">
-                <?php foreach ($type_terms as $term): ?>
-                  <label class="filter-option">
-                    <input type="checkbox" name="filter_type[]" value="<?php echo esc_attr($term->term_id); ?>"
-                      <?php echo in_array($term->term_id, $selected_types, true) ? 'checked' : ''; ?> />
-                    <span class="filter-option-text"><?php echo esc_html($term->name); ?></span>
-                  </label>
-                <?php endforeach; ?>
+                <label class="filter-option">
+                  <input type="checkbox" name="english_supported" value="1"
+                    <?php echo $english_supported ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">英語対応</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="kid_friendly" value="1"
+                    <?php echo $kid_friendly ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">子連れ</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="group_booking" value="1"
+                    <?php echo $group_booking ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">グループ貸切</span>
+                </label>
               </div>
-            <?php endif; ?>
 
-            <div class="filter-heading">オプション</div>
-            <div class="filter-checkboxes">
-              <label class="filter-option">
-                <input type="checkbox" name="english_supported" value="1"
-                  <?php echo $english_supported ? 'checked' : ''; ?> />
-                <span class="filter-option-text">英語対応</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="kid_friendly" value="1"
-                  <?php echo $kid_friendly ? 'checked' : ''; ?> />
-                <span class="filter-option-text">子連れ</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="group_booking" value="1"
-                  <?php echo $group_booking ? 'checked' : ''; ?> />
-                <span class="filter-option-text">グループ貸切</span>
-              </label>
-            </div>
+              <div class="filter-heading">人数</div>
+              <div class="filter-checkboxes">
+                <label class="filter-option">
+                  <input type="checkbox" name="capacity_range[]" value="1-10"
+                    <?php echo in_array('1-10', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">~10人</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="capacity_range[]" value="11-20"
+                    <?php echo in_array('11-20', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">11~20人</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="capacity_range[]" value="20+"
+                    <?php echo in_array('20+', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">20人+</span>
+                </label>
+              </div>
 
-            <div class="filter-heading">人数</div>
-            <div class="filter-checkboxes">
-              <label class="filter-option">
-                <input type="checkbox" name="capacity_range[]" value="1-10"
-                  <?php echo in_array('1-10', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">~10人</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="capacity_range[]" value="11-20"
-                  <?php echo in_array('11-20', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">11~20人</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="capacity_range[]" value="20+"
-                  <?php echo in_array('20+', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">20人+</span>
-              </label>
-            </div>
+              <div class="filter-heading">所要時間</div>
+              <div class="filter-checkboxes">
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="0-60"
+                    <?php echo in_array('0-60', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">~60分</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="60-90"
+                    <?php echo in_array('60-90', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">60~90分</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="90-120"
+                    <?php echo in_array('90-120', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">90~120分</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="120-150"
+                    <?php echo in_array('120-150', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">120~150分</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="150-180"
+                    <?php echo in_array('150-180', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">150~180分</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="time_range[]" value="180+"
+                    <?php echo in_array('180+', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">180分+</span>
+                </label>
+              </div>
 
-            <div class="filter-heading">所要時間</div>
-            <div class="filter-checkboxes">
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="0-60"
-                  <?php echo in_array('0-60', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">~60分</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="60-90"
-                  <?php echo in_array('60-90', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">60~90分</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="90-120"
-                  <?php echo in_array('90-120', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">90~120分</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="120-150"
-                  <?php echo in_array('120-150', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">120~150分</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="150-180"
-                  <?php echo in_array('150-180', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">150~180分</span>
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="time_range[]" value="180+"
-                  <?php echo in_array('180+', $selected_time_ranges, true) ? 'checked' : ''; ?> />
-                <span class="filter-option-text">180分+</span>
-              </label>
-            </div>
-
-            <input type="hidden" name="sort" value="<?php echo esc_attr($sort); ?>" />
-            <button type="submit" class="filter-button">検索結果を表示</button>
-          </form>
+              <input type="hidden" name="sort" value="<?php echo esc_attr($sort); ?>" />
+              <button type="submit" class="filter-button">検索結果を表示</button>
+            </form>
+          </div>
         </div>
 
-        <div class="sort-area">
-          <?php foreach ($sort_labels as $sort_key => $sort_label): ?>
-            <a class="sort-link<?php echo $sort === $sort_key ? ' current' : ''; ?>"
-              href="<?php echo esc_url(add_query_arg(array_merge(['sort' => $sort_key, 'paged' => 1], $current_filter_args))); ?>">
-              <?php echo esc_html($sort_label); ?>
-            </a>
-            <?php if ($sort_key !== array_key_last($sort_labels)): ?>
-              <span class="sort-sep">|</span>
-            <?php endif; ?>
-          <?php endforeach; ?>
+        <div class="flex-filters">
+          <div type="button" class="filter-toggle-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+              <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+            </svg>
+            フィルター
+          </div>
+  
+          <div class="sort-area">
+            <?php foreach ($sort_labels as $sort_key => $sort_label): ?>
+              <a class="sort-link<?php echo $sort === $sort_key ? ' current' : ''; ?>"
+                href="<?php echo esc_url(add_query_arg(array_merge(['sort' => $sort_key, 'paged' => 1], $current_filter_args))); ?>">
+                <?php echo esc_html($sort_label); ?>
+              </a>
+              <?php if ($sort_key !== array_key_last($sort_labels)): ?>
+                <span class="sort-sep">|</span>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </div>
         </div>
 
         <?php
@@ -527,7 +540,6 @@ require TEMPLATEPATH . '/inc/my_variables.php';
     <?php get_footer(); ?>
   </main>
   <?php wp_footer() ?>
-
 </body>
 
 </html>

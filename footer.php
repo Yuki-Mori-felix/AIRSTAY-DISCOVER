@@ -4,6 +4,8 @@ include TEMPLATEPATH . '/inc/my_variables.php';
 <script src="<?= get_template_directory_uri(); ?>/js/script.js?v=<?= filemtime(get_template_directory() . '/js/script.js'); ?>"></script>
 <?php if (is_front_page()): ?>
   <script src="<?= get_template_directory_uri(); ?>/js/front-page.js?v=<?= filemtime(get_template_directory() . '/js/front-page.js'); ?>"></script>
+<?php elseif (is_archive("event")): ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/archive-event.js"></script>
 <?php elseif (is_singular("event") || is_page("create-event")): ?>
   <script src="<?= get_template_directory_uri(); ?>/js/single-event.js?v=<?= filemtime(get_template_directory() . '/js/single-event.js'); ?>"></script>
 <?php endif; ?>
