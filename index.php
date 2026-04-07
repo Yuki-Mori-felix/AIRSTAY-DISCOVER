@@ -325,6 +325,27 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
                   <div class="list-price"><?= the_field('event_price'); ?>JPY</div>
 
+                  <ul class="filter-list">
+                    <?php if (get_post_meta(get_the_ID(), 'capacity', true)): ?>
+                      <li class="filter-item"><?= get_post_meta(get_the_ID(), 'capacity', true); ?> 人</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'time_required', true)): ?>
+                      <li class="filter-item"><?= get_post_meta(get_the_ID(), 'time_required', true); ?> 分</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'english_supported', true) == 1): ?>
+                      <li class="filter-item">英語対応</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'kid_friendly', true) == 1): ?>
+                      <li class="filter-item">子連れ可</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'group_booking', true) == 1): ?>
+                      <li class="filter-item">グループ貸切可</li>
+                    <?php endif; ?>
+                    <?php if (get_post_meta(get_the_ID(), 'except_tokyo', true) == 1): ?>
+                      <li class="filter-item">東京以外</li>
+                    <?php endif; ?>
+                  </ul>
+
                 </a>
 
               </li>

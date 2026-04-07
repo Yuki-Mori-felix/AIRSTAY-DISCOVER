@@ -2196,6 +2196,22 @@ section {
 .sec-experiences .splide-event .splide-wrapper .splide__track .splide__list .splide__slide a .list-textarea .list-price {
   font-size: 16px;
   color: #1d95d4;
+  margin-bottom: 30px;
+}
+.sec-experiences .splide-event .splide-wrapper .splide__track .splide__list .splide__slide a .list-textarea .filter-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.sec-experiences .splide-event .splide-wrapper .splide__track .splide__list .splide__slide a .list-textarea .filter-list .filter-item {
+  font-size: 12px;
+  color: #333;
+  background: #ebebeb;
+  padding: 2px 12px;
+  border-radius: 50px;
 }
 
 .sec-arrivals {
@@ -2412,6 +2428,22 @@ section {
 .event-list .list-item .post-link .list-price {
   font-size: 16px;
   color: #1d95d4;
+  margin-bottom: 20px;
+}
+.event-list .list-item .post-link .filter-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.event-list .list-item .post-link .filter-list .filter-item {
+  font-size: 12px;
+  color: #333;
+  background: #EBEBEB;
+  padding: 2px 12px;
+  border-radius: 50px;
 }
 .event-list .list-item .status-button-area {
   display: -webkit-box;

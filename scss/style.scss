@@ -340,6 +340,21 @@ section {
 								.list-price {
 									font-size: 16px;
 									color: #1d95d4;
+                  margin-bottom: 30px;
+								}
+
+								.filter-list {
+									display: flex;
+									gap: 10px;
+									flex-wrap: wrap;
+
+									.filter-item {
+										font-size: 12px;
+										color: #333;
+										background: #ebebeb;
+										padding: 2px 12px;
+										border-radius: 50px;
+									}
 								}
 							}
 						}
@@ -556,7 +571,22 @@ section {
 			.list-price {
 				font-size: 16px;
 				color: #1d95d4;
+        margin-bottom: 20px;
 			}
+
+      .filter-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .filter-item {
+          font-size: 12px;
+          color: #333;
+          background: #EBEBEB;
+          padding: 2px 12px;
+          border-radius: 50px;
+        }
+      }
 		}
 
 		.status-button-area {

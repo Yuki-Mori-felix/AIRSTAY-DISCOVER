@@ -143,6 +143,36 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         update_post_meta($post_id, 'review_02', sanitize_textarea_field($_POST['review_02']));
       }
 
+      // ▼ 新しい5つの項目を更新
+      if (isset($_POST['capacity'])) {
+        update_post_meta($post_id, 'capacity', intval($_POST['capacity']));
+      }
+
+      if (isset($_POST['english_supported'])) {
+        update_post_meta($post_id, 'english_supported', 1);
+      } else {
+        update_post_meta($post_id, 'english_supported', 0);
+      }
+
+      if (isset($_POST['kid_friendly'])) {
+        update_post_meta($post_id, 'kid_friendly', 1);
+      } else {
+        update_post_meta($post_id, 'kid_friendly', 0);
+      }
+
+      if (isset($_POST['group_booking'])) {
+        update_post_meta($post_id, 'group_booking', 1);
+      } else {
+        update_post_meta($post_id, 'group_booking', 0);
+      }
+
+      if (isset($_POST['except_tokyo'])) {
+        update_post_meta($post_id, 'except_tokyo', 1);
+      } else {
+        update_post_meta($post_id, 'except_tokyo', 0);
+      }
+      // ▲ 新しい5つの項目の更新ここまで
+
       // 更新後にリロード
       wp_redirect(get_permalink($post_id) . '?updated=1');
       exit;
@@ -220,6 +250,44 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 <label>新しい体験種類を追加</label>
                 <input type="text" name="event_type_new" placeholder="例：Cultural Experiences">
               </div>
+            </div>
+
+            <div class="form-item">
+              <label>定員</label>
+              <input type="number" name="capacity" min="1" step="1" placeholder="例：4"
+                value="<?= esc_attr(get_post_meta(get_the_ID(), 'capacity', true)); ?>">
+            </div>
+
+            <div class="form-item">
+              <label>
+                <input type="checkbox" name="english_supported" value="1"
+                  <?= (get_post_meta(get_the_ID(), 'english_supported', true) == 1) ? 'checked' : '' ?>>
+                英語対応
+              </label>
+            </div>
+
+            <div class="form-item">
+              <label>
+                <input type="checkbox" name="kid_friendly" value="1"
+                  <?= (get_post_meta(get_the_ID(), 'kid_friendly', true) == 1) ? 'checked' : '' ?>>
+                子連れ可
+              </label>
+            </div>
+
+            <div class="form-item">
+              <label>
+                <input type="checkbox" name="group_booking" value="1"
+                  <?= (get_post_meta(get_the_ID(), 'group_booking', true) == 1) ? 'checked' : '' ?>>
+                グループ貸切
+              </label>
+            </div>
+
+            <div class="form-item">
+              <label>
+                <input type="checkbox" name="except_tokyo" value="1"
+                  <?= (get_post_meta(get_the_ID(), 'except_tokyo', true) == 1) ? 'checked' : '' ?>>
+                東京以外の体験
+              </label>
             </div>
 
             <?php

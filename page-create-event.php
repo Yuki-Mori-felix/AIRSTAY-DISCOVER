@@ -21,6 +21,11 @@ handle_frontend_post_create([
     'event_price_detail',
     'review_01',
     'review_02',
+    'capacity',
+    'english_supported',
+    'kid_friendly',
+    'group_booking',
+    'except_tokyo',
   ],
 ]);
 
@@ -99,6 +104,39 @@ get_header();
             <label>新しい体験種類を追加</label>
             <input type="text" name="event_type_new" placeholder="例：Cultural Experiences">
           </div>
+        </div>
+
+        <div class="form-item">
+          <label>定員</label>
+          <input type="number" name="capacity" min="1" step="1" placeholder="例：4">
+        </div>
+
+        <div class="form-item">
+          <label>
+            <input type="checkbox" name="english_supported" value="1">
+            英語対応
+          </label>
+        </div>
+
+        <div class="form-item">
+          <label>
+            <input type="checkbox" name="kid_friendly" value="1">
+            子連れ可
+          </label>
+        </div>
+
+        <div class="form-item">
+          <label>
+            <input type="checkbox" name="group_booking" value="1">
+            グループ貸切可
+          </label>
+        </div>
+
+        <div class="form-item">
+          <label>
+            <input type="checkbox" name="except_tokyo" value="1">
+            東京以外の体験
+          </label>
         </div>
 
         <?php
