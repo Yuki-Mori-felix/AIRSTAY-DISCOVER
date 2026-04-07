@@ -33,6 +33,13 @@ require TEMPLATEPATH . '/inc/my_variables.php';
           'hide_empty' => false,
         ]);
 
+        // ▼ 新しいフィルター項目の処理
+        $english_supported = isset($_GET['english_supported']) ? 1 : 0;
+        $kid_friendly = isset($_GET['kid_friendly']) ? 1 : 0;
+        $group_booking = isset($_GET['group_booking']) ? 1 : 0;
+        $selected_capacity_ranges = isset($_GET['capacity_range']) ? array_map('sanitize_text_field', (array) $_GET['capacity_range']) : [];
+        $selected_time_ranges = isset($_GET['time_range']) ? array_map('sanitize_text_field', (array) $_GET['time_range']) : [];
+
         $sort_labels = [
           'new'   => '新着順',
           'price' => '安い順',
@@ -42,6 +49,21 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         $current_filter_args = [];
         if (!empty($selected_types)) {
           $current_filter_args['filter_type'] = $selected_types;
+        }
+        if ($english_supported) {
+          $current_filter_args['english_supported'] = $english_supported;
+        }
+        if ($kid_friendly) {
+          $current_filter_args['kid_friendly'] = $kid_friendly;
+        }
+        if ($group_booking) {
+          $current_filter_args['group_booking'] = $group_booking;
+        }
+        if (!empty($selected_capacity_ranges)) {
+          $current_filter_args['capacity_range'] = $selected_capacity_ranges;
+        }
+        if (!empty($selected_time_ranges)) {
+          $current_filter_args['time_range'] = $selected_time_ranges;
         }
         ?>
 
@@ -59,6 +81,79 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 <?php endforeach; ?>
               </div>
             <?php endif; ?>
+
+            <div class="filter-heading">オプション</div>
+            <div class="filter-checkboxes">
+              <label class="filter-option">
+                <input type="checkbox" name="english_supported" value="1"
+                  <?php echo $english_supported ? 'checked' : ''; ?> />
+                <span class="filter-option-text">英語対応</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="kid_friendly" value="1"
+                  <?php echo $kid_friendly ? 'checked' : ''; ?> />
+                <span class="filter-option-text">子連れ</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="group_booking" value="1"
+                  <?php echo $group_booking ? 'checked' : ''; ?> />
+                <span class="filter-option-text">グループ貸切</span>
+              </label>
+            </div>
+
+            <div class="filter-heading">人数</div>
+            <div class="filter-checkboxes">
+              <label class="filter-option">
+                <input type="checkbox" name="capacity_range[]" value="1-10"
+                  <?php echo in_array('1-10', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">~10人</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="capacity_range[]" value="11-20"
+                  <?php echo in_array('11-20', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">11~20人</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="capacity_range[]" value="20+"
+                  <?php echo in_array('20+', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">20人+</span>
+              </label>
+            </div>
+
+            <div class="filter-heading">所要時間</div>
+            <div class="filter-checkboxes">
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="0-60"
+                  <?php echo in_array('0-60', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">~60分</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="60-90"
+                  <?php echo in_array('60-90', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">60~90分</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="90-120"
+                  <?php echo in_array('90-120', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">90~120分</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="120-150"
+                  <?php echo in_array('120-150', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">120~150分</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="150-180"
+                  <?php echo in_array('150-180', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">150~180分</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="time_range[]" value="180+"
+                  <?php echo in_array('180+', $selected_time_ranges, true) ? 'checked' : ''; ?> />
+                <span class="filter-option-text">180分+</span>
+              </label>
+            </div>
+
             <input type="hidden" name="sort" value="<?php echo esc_attr($sort); ?>" />
             <button type="submit" class="filter-button">検索結果を表示</button>
           </form>
@@ -91,6 +186,175 @@ require TEMPLATEPATH . '/inc/my_variables.php';
               'terms'    => $selected_types,
             ],
           ];
+        }
+
+        // ▼ 新しいメタフィルターの追加
+        $meta_query = [];
+        if ($english_supported) {
+          $meta_query[] = [
+            'key'   => 'english_supported',
+            'value' => '1',
+            'compare' => '='
+          ];
+        }
+        if ($kid_friendly) {
+          $meta_query[] = [
+            'key'   => 'kid_friendly',
+            'value' => '1',
+            'compare' => '='
+          ];
+        }
+        if ($group_booking) {
+          $meta_query[] = [
+            'key'   => 'group_booking',
+            'value' => '1',
+            'compare' => '='
+          ];
+        }
+
+        // ▼ 人数範囲フィルターの追加
+        if (!empty($selected_capacity_ranges)) {
+          $capacity_conditions = [];
+          foreach ($selected_capacity_ranges as $range) {
+            switch ($range) {
+              case '1-10':
+                $capacity_conditions[] = [
+                  'key'     => 'capacity',
+                  'value'   => 10,
+                  'type'    => 'NUMERIC',
+                  'compare' => '<='
+                ];
+                break;
+              case '11-20':
+                $capacity_conditions[] = [
+                  'relation' => 'AND',
+                  [
+                    'key'     => 'capacity',
+                    'value'   => 11,
+                    'type'    => 'NUMERIC',
+                    'compare' => '>='
+                  ],
+                  [
+                    'key'     => 'capacity',
+                    'value'   => 20,
+                    'type'    => 'NUMERIC',
+                    'compare' => '<='
+                  ]
+                ];
+                break;
+              case '20+':
+                $capacity_conditions[] = [
+                  'key'     => 'capacity',
+                  'value'   => 20,
+                  'type'    => 'NUMERIC',
+                  'compare' => '>='
+                ];
+                break;
+            }
+          }
+          if (!empty($capacity_conditions)) {
+            $meta_query[] = array_merge(['relation' => 'OR'], $capacity_conditions);
+          }
+        }
+
+        // ▼ 所要時間範囲フィルターの追加
+        if (!empty($selected_time_ranges)) {
+          $time_conditions = [];
+          foreach ($selected_time_ranges as $range) {
+            switch ($range) {
+              case '0-60':
+                $time_conditions[] = [
+                  'key'     => 'time_required',
+                  'value'   => 60,
+                  'type'    => 'NUMERIC',
+                  'compare' => '<='
+                ];
+                break;
+              case '60-90':
+                $time_conditions[] = [
+                  'relation' => 'AND',
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 60,
+                    'type'    => 'NUMERIC',
+                    'compare' => '>='
+                  ],
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 90,
+                    'type'    => 'NUMERIC',
+                    'compare' => '<='
+                  ]
+                ];
+                break;
+              case '90-120':
+                $time_conditions[] = [
+                  'relation' => 'AND',
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 90,
+                    'type'    => 'NUMERIC',
+                    'compare' => '>='
+                  ],
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 120,
+                    'type'    => 'NUMERIC',
+                    'compare' => '<='
+                  ]
+                ];
+                break;
+              case '120-150':
+                $time_conditions[] = [
+                  'relation' => 'AND',
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 120,
+                    'type'    => 'NUMERIC',
+                    'compare' => '>='
+                  ],
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 150,
+                    'type'    => 'NUMERIC',
+                    'compare' => '<='
+                  ]
+                ];
+                break;
+              case '150-180':
+                $time_conditions[] = [
+                  'relation' => 'AND',
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 150,
+                    'type'    => 'NUMERIC',
+                    'compare' => '>='
+                  ],
+                  [
+                    'key'     => 'time_required',
+                    'value'   => 180,
+                    'type'    => 'NUMERIC',
+                    'compare' => '<='
+                  ]
+                ];
+                break;
+              case '180+':
+                $time_conditions[] = [
+                  'key'     => 'time_required',
+                  'value'   => 180,
+                  'type'    => 'NUMERIC',
+                  'compare' => '>='
+                ];
+                break;
+            }
+          }
+          if (!empty($time_conditions)) {
+            $meta_query[] = array_merge(['relation' => 'OR'], $time_conditions);
+          }
+        }
+
+        if (!empty($meta_query)) {
+          $args['meta_query'] = $meta_query;
         }
 
         switch ($sort) {
@@ -199,6 +463,21 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             $pagination_add_args = ['sort' => $sort];
             if (!empty($selected_types)) {
               $pagination_add_args['filter_type'] = $selected_types;
+            }
+            if ($english_supported) {
+              $pagination_add_args['english_supported'] = $english_supported;
+            }
+            if ($kid_friendly) {
+              $pagination_add_args['kid_friendly'] = $kid_friendly;
+            }
+            if ($group_booking) {
+              $pagination_add_args['group_booking'] = $group_booking;
+            }
+            if (!empty($selected_capacity_ranges)) {
+              $pagination_add_args['capacity_range'] = $selected_capacity_ranges;
+            }
+            if (!empty($selected_time_ranges)) {
+              $pagination_add_args['time_range'] = $selected_time_ranges;
             }
 
             $pagination_links = paginate_links([
