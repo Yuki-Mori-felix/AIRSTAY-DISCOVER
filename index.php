@@ -34,6 +34,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
               <button type="submit">search</button>
             </div>
           </form>
+          <div class="badge"><span class="badge-text">AIRSTAY host recommendation</span></div>
         </div>
       </div>
     </section>

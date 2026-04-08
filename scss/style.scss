@@ -32,7 +32,7 @@ section {
 		transform: translate(-50%);
 		width: 96%;
 		@include tab {
-			top: 115px;
+			top: 103px;
 		}
 
 		.part-search-wrap {
@@ -128,10 +128,34 @@ section {
 				}
 			}
 		}
+
+    .badge {
+      width: 254px;
+      height: 28px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      margin-top: 80px;
+      margin-inline: auto;
+      @include tab {
+        margin-top: 34px;
+      }
+
+      .badge-text {
+        display: block;
+        font-size: 15px;
+        line-height: 28.8px;
+        text-align: center;
+        color: #fff;
+        @include tab {
+          font-size: 12px;
+        }
+      }
+    }
 	}
 }
 
 .sec-categories {
+  background: white;
 	.wrap {
 		.category-list {
 			display: grid;

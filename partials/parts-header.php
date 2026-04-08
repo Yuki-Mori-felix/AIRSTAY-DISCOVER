@@ -4,9 +4,11 @@ include TEMPLATEPATH . '/inc/my_variables.php';
 
 <header id="header">
   <div class="header-wrap">
+    <div class="language"><?php echo do_shortcode('[linguise]'); ?></div>
     <div class="header-logo">
       <a href="<?= $home_url; ?>/">
-        <h1 class="notranslate">AIRSTAY DISCOVER</h1>
+        <img src="<?= $img_path ?>/logo.png" alt="AIRSTAY DISCOVER">
+        <h1 class="notranslate">AIRSTAY <br class="sp-br">DISCOVER</h1>
       </a>
     </div>
     <div class="header-menu">
@@ -47,7 +49,6 @@ include TEMPLATEPATH . '/inc/my_variables.php';
           </a>
         </li>
       </ul>
-      <div class="language"><?php echo do_shortcode('[linguise]'); ?></div>
     </div>
   </div>
 </header>

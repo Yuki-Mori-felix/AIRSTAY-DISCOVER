@@ -214,8 +214,27 @@ header {
 			display: block;
       padding: 15px;
 		}
+    @include sp {
+      padding: 10px 0;
+    }
 
 		.header-logo {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      transform: translateX(-50%);
+      @media screen and (821px <= width <= 970px) {
+        left: 40%;
+      }
+      @include tab {
+        top: 15px;
+      }
+      @include sp {
+        left: unset;
+        transform: unset;
+        right: 65px;
+      }
+
 			a {
 				font-family: Montserrat;
 				font-weight: bold;
@@ -224,11 +243,34 @@ header {
 				color: #fff;
 				text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 				font-weight: 700;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 15px;
 				@include tab {
 					font-size: 20px;
 				}
         @include sp {
           font-size: 17px;
+          gap: 5px;
+          line-height: 1;
+        }
+
+        img {
+          width: 60px;
+          height: 60px;
+          filter: drop-shadow(5px 5px 5px rgba(160, 160, 160, 0.4));
+          @include tab {
+            width: 33px;
+            height: 33px;
+          }
+        }
+
+        .sp-br {
+          display: none;
+          @include sp {
+            display: block;
+          }
         }
 			}
 		}
@@ -437,6 +479,16 @@ header {
         }
       }
 		}
+
+    .language {
+      #dropdown {
+        .linguise_switcher {
+          .linguise_current_lang {
+            background: white;
+          }
+        }
+      }
+    }
 	}
 }
 .home header {
