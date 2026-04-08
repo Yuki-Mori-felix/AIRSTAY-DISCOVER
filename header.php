@@ -10,7 +10,12 @@ include TEMPLATEPATH . '/inc/my_variables.php';
 <link rel="apple-touch-icon" href="<?= $img_path ?>/apple-touch-icon.png">
 <link rel="icon" sizes="192x192" href="<?= $img_path ?>/android-chrome-192×192.png">
 <!-- Open Graph Image -->
+<meta property="og:url" content="https://airstay.jp/">
+<meta property="og:site_name" content="AIRSTAY DISCOVER">
+<meta property="og:title" content="AiRSTAY DISCOVER | Immerse yourself in authentic rituals and local crafts.">
+<meta property="og:type" content="website">
 <meta property="og:image" content="<?= $img_path ?>/ogp.png">
+<meta name="twitter:image" content="<?= $img_path ?>/ogp.png">
 <title>
   <?php if(is_post_type_archive('event')): ?>
     AIRSTAY DISCOVER | Experiences
