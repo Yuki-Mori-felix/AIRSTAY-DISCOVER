@@ -507,9 +507,6 @@ require TEMPLATEPATH . '/inc/my_variables.php';
               </div>
             <?php endif; ?>
 
-
-            <!-- <?php echo do_shortcode('[site_reviews hide="title, rating, date, author, assigned_links" assigned_posts="post_id" display="2"]'); ?> -->
-
           </div>
 
           <a style="display: none;" href="<?php echo home_url('/contact/?event_id=' . get_the_ID() . '&event_title=' . urlencode(get_the_title())); ?>" class="common-button">

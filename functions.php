@@ -318,31 +318,3 @@ function my_breadcrumb()
   echo '</nav>';
   echo '</div>';
 }
-
-add_action('init', function () {
-  if (isset($_GET['delete_review'])) {
-
-    $review_id = intval($_GET['delete_review']);
-
-    // nonce チェック
-    if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'delete_review_' . $review_id)) {
-      return;
-    }
-
-    // レビュー投稿者 or 管理者のみ削除可能
-    $review = get_post($review_id);
-    if (!$review) return;
-
-    if (is_user_logged_in()) {
-      $user = wp_get_current_user();
-
-      if ($user->ID == $review->post_author || current_user_can('administrator')) {
-        wp_delete_post($review_id, true);
-
-        // 削除後のリダイレクト
-        wp_redirect(remove_query_arg(['delete_review', '_wpnonce']));
-        exit;
-      }
-    }
-  }
-});
