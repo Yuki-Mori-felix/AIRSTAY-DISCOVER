@@ -98,11 +98,13 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: min(100px, 7vw);
+  margin-bottom: 120px;
 }
 @media screen and (max-width: 820px) {
   .sec-post .post-detail .detail-grid {
     grid-template-columns: 1fr;
     gap: 60px;
+    margin-bottom: 40px;
   }
 }
 .sec-post .post-detail .detail-grid .detail-summary .summary {
@@ -210,14 +212,6 @@
 }
 .sec-post .post-detail .text-area a:hover {
   text-decoration: underline;
-}
-.sec-post .post-detail .price-area {
-  margin-bottom: 120px;
-}
-@media screen and (max-width: 820px) {
-  .sec-post .post-detail .price-area {
-    margin-bottom: 40px;
-  }
 }
 .sec-post .post-detail .price-area .event_price {
   font-weight: bold;

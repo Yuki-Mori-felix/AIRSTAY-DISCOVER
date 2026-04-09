@@ -96,9 +96,11 @@
 			display: grid;
 			grid-template-columns: 1fr 2fr;
 			gap: min(100px, 7vw);
+      margin-bottom: 120px;
 			@include tab {
 				grid-template-columns: 1fr;
 				gap: 60px;
+        margin-bottom: 40px;
 			}
 
 			.detail-summary {
@@ -205,10 +207,10 @@
 		}
 
 		.price-area {
-			margin-bottom: 120px;
-			@include tab {
-				margin-bottom: 40px;
-			}
+			// margin-bottom: 120px;
+			// @include tab {
+			// 	margin-bottom: 40px;
+			// }
 
 			.event_price {
 				font-weight: bold;
