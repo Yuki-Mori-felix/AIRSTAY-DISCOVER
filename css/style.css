@@ -1656,6 +1656,9 @@ header .header-wrap .language #dropdown .linguise_switcher .linguise_current_lan
   font-size: 16px;
   position: fixed;
   right: 1px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   bottom: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1669,7 +1672,7 @@ header .header-wrap .language #dropdown .linguise_switcher .linguise_current_lan
 @media screen and (max-width: 500px) {
   .create-buttons {
     font-size: 12px;
-    top: 60px;
+    top: 70px;
     gap: 2px;
   }
 }
@@ -1836,33 +1839,17 @@ footer .copy-right p {
   }
 }
 
+.editor-mode {
+  max-width: 1000px;
+  margin-inline: auto;
+  background: #fafafa;
+  padding: 40px;
+}
 .editor-mode .form-item {
   border-bottom: 2px dashed #ddd;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
-/*______________ レビュープラグイン ______________*/
-.glsr-default .glsr-form-wrap {
-  margin-top: 50px;
-}
-.glsr-default .glsr-form-wrap .glsr-field .glsr-label {
-  font-size: 20px;
-}
-.glsr-default .glsr-form-wrap .wp-block-buttons {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-inline: auto;
-  margin-top: 20px;
-}
-.glsr-default .glsr-form-wrap .wp-block-buttons button {
-  display: block;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-/*______________ レビュープラグイン ______________*/
 section {
   padding-block: 100px;
 }
@@ -2388,8 +2375,16 @@ section {
   gap: 10px;
   margin-bottom: 30px;
 }
+@media screen and (max-width: 500px) {
+  .sec-event-list .filter-area .filter-checkboxes {
+    margin-bottom: 20px;
+  }
+}
 .sec-event-list .filter-area .filter-checkboxes .filter-option {
-  width: 30%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 30%;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -2426,6 +2421,11 @@ section {
   color: #333;
   -webkit-transition: background-color 0.2s ease, color 0.2s ease;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+@media screen and (max-width: 500px) {
+  .sec-event-list .filter-area .filter-checkboxes .filter-option-text {
+    padding: 7px 14px;
+  }
 }
 .sec-event-list .filter-area .filter-checkboxes .filter-option input:checked + .filter-option-text {
   background: #1d95d4;
@@ -2505,6 +2505,18 @@ section {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 20px;
+}
+@media screen and (max-width: 500px) {
+  .sec-event-list .flex-filters {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    gap: 10px;
+  }
 }
 .sec-event-list .flex-filters .filter-toggle-button {
   display: -webkit-box;

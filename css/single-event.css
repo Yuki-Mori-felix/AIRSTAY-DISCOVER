@@ -205,12 +205,6 @@
     margin-bottom: 40px;
   }
 }
-.sec-post .post-detail .text-area .event_text {
-  margin-bottom: 50px;
-}
-.sec-post .post-detail .text-area .event_text:only-child {
-  margin-bottom: 0;
-}
 .sec-post .post-detail .text-area a {
   color: #0066c0;
 }
