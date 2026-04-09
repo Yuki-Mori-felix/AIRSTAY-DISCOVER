@@ -135,12 +135,12 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         update_post_meta($post_id, 'event_price_detail', sanitize_textarea_field($_POST['event_price_detail']));
       }
 
-      if (isset($_POST['review_01'])) {
-        update_post_meta($post_id, 'review_01', sanitize_textarea_field($_POST['review_01']));
+      if (isset($_POST['word_from_airstay'])) {
+        update_post_meta($post_id, 'word_from_airstay', sanitize_textarea_field($_POST['word_from_airstay']));
       }
 
-      if (isset($_POST['review_02'])) {
-        update_post_meta($post_id, 'review_02', sanitize_textarea_field($_POST['review_02']));
+      if (isset($_POST['event_url'])) {
+        update_post_meta($post_id, 'event_url', esc_url_raw($_POST['event_url']));
       }
 
       // ▼ 新しい5つの項目を更新
@@ -358,13 +358,13 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             </div>
 
             <div class="form-item">
-              <label>レビュー 1</label>
-              <textarea name="review_01" rows="5"><?= esc_textarea(get_post_meta(get_the_ID(), 'review_01', true)); ?></textarea>
+              <label>AIRSTAYからひとこと</label>
+              <textarea name="word_from_airstay" rows="3"><?= esc_textarea(get_post_meta(get_the_ID(), 'word_from_airstay', true)); ?></textarea>
             </div>
 
             <div class="form-item">
-              <label>レビュー 2</label>
-              <textarea name="review_02" rows="5"><?= esc_textarea(get_post_meta(get_the_ID(), 'review_02', true)); ?></textarea>
+              <label>運営者ページURL</label>
+              <input type="url" name="event_url" value="<?= esc_attr(get_post_meta(get_the_ID(), 'event_url', true)); ?>">
             </div>
 
             <button type="submit">更新する</button>
@@ -436,81 +436,114 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
             </div>
 
-            <div class="text-area">
-              <?php $time = get_field('time_required'); ?>
-              <p class="duration">所要時間：<?= esc_html($time); ?> 分</p>
+            <div class="detail-grid">
 
-              <?php
-              $text = get_post_meta(get_the_ID(), 'event_text', true);
-              if (!empty($text)):
-              ?>
-                <div class="event_text">
-                  <?= nl2br(auto_link_text($text)); ?>
-                </div>
-              <?php endif; ?>
-
-              <?php
-              $schedule = get_post_meta(get_the_ID(), 'event_time_schedule', true);
-              if (!empty($schedule)):
-              ?>
-                <div class="event_time_schedule">
-                  <?= nl2br(auto_link_text($schedule)); ?>
-                </div>
-              <?php endif; ?>
-
-            </div>
-
-            <div class="price-area">
-              <?php
-              $price = get_post_meta(get_the_ID(), 'event_price', true);
-              if (!empty($price)):
-              ?>
-                <div class="event_price">
-                  <p><?= esc_html($price); ?>JPY</p>
-                </div>
-              <?php endif; ?>
-
-              <?php
-              $price_detail = get_post_meta(get_the_ID(), 'event_price_detail', true);
-              if (!empty($price_detail)):
-              ?>
-                <div class="event_price_detail">
-                  <?= nl2br(auto_link_text($price_detail)); ?>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <?php
-            $review_01 = get_field('review_01');
-            $review_02 = get_field('review_02');
-            ?>
-
-            <?php if ($review_01 || $review_02): ?>
-              <div class="review-area">
-                <h4>Customer reviews</h4>
-
-                <ul class="review-list">
-
-                  <?php if ($review_01): ?>
-                    <li class="review-item">
-                      <p><?= esc_html($review_01); ?></p>
-                    </li>
-                  <?php endif; ?>
-
-                  <?php if ($review_02): ?>
-                    <li class="review-item">
-                      <p><?= esc_html($review_02); ?></p>
-                    </li>
-                  <?php endif; ?>
-
+              <div class="detail-summary">
+                <div class="summary">アクティビティ概要</div>
+                <ul class="summary-list">
+                  <li class="summary-item">
+                    <div class="summary-title"><span class="text">人数</span></div>
+                    <div class="summary-text"><?= esc_html(get_field('capacity')); ?>人</div>
+                  </li>
+                  <li class="summary-item">
+                    <div class="summary-title"><span class="text">所要時間</span></div>
+                    <div class="summary-text">約 <?= esc_html(get_field('time_required')); ?> 分</div>
+                  </li>
+                  <li class="summary-item">
+                    <?php if (get_field("english_supported")): ?>
+                      <div class="summary-title">
+                        <div class="text">英語対応</div>
+                      </div>
+                    <?php endif; ?>
+                  </li>
+                  <li class="summary-item">
+                    <?php if (get_field("kid_friendly")): ?>
+                      <div class="summary-title">
+                        <div class="text">子連れ可</div>
+                      </div>
+                    <?php endif; ?>
+                  </li>
+                  <li class="summary-item">
+                    <?php if (get_field("group_booking")): ?>
+                      <div class="summary-title">
+                        <div class="text">グループ貸切可</div>
+                      </div>
+                    <?php endif; ?>
+                  </li>
+                  <li class="summary-item">
+                    <?php if (get_field("except_tokyo")): ?>
+                      <div class="summary-title">
+                        <div class="text">東京以外</div>
+                      </div>
+                    <?php endif; ?>
+                  </li>
                 </ul>
               </div>
+
+              <div class="detail-text">
+                <div class="text-area">
+
+                  <?php
+                  $text = get_post_meta(get_the_ID(), 'event_text', true);
+                  if (!empty($text)):
+                  ?>
+                    <div class="event_text">
+                      <?= nl2br(auto_link_text($text)); ?>
+                    </div>
+                  <?php endif; ?>
+
+                  <?php
+                  $schedule = get_post_meta(get_the_ID(), 'event_time_schedule', true);
+                  if (!empty($schedule)):
+                  ?>
+                    <div class="event_time_schedule">
+                      <?= nl2br(auto_link_text($schedule)); ?>
+                    </div>
+                  <?php endif; ?>
+
+                </div>
+
+                <div class="price-area">
+                  <?php
+                  $price = get_post_meta(get_the_ID(), 'event_price', true);
+                  if (!empty($price)):
+                  ?>
+                    <div class="event_price">
+                      <p><?= esc_html($price); ?>JPY</p>
+                    </div>
+                  <?php endif; ?>
+
+                  <?php
+                  $price_detail = get_post_meta(get_the_ID(), 'event_price_detail', true);
+                  if (!empty($price_detail)):
+                  ?>
+                    <div class="event_price_detail">
+                      <?= nl2br(auto_link_text($price_detail)); ?>
+                    </div>
+                  <?php endif; ?>
+                </div>
+              </div>
+
+            </div>
+
+            <?php 
+            $word_from_airstay = get_field("word_from_airstay");
+            if (!empty($word_from_airstay)): 
+            ?>
+            <div class="review-area">
+              <h4>AIRSTAYからひとこと</h4>
+              <ul class="review-list">
+                <li class="review-item">
+                  <p><?= get_field("word_from_airstay"); ?></p>
+                </li>
+              </ul>
+            </div>
             <?php endif; ?>
 
           </div>
 
-          <a style="display: none;" href="<?php echo home_url('/contact/?event_id=' . get_the_ID() . '&event_title=' . urlencode(get_the_title())); ?>" class="common-button">
-            <span class="text">Apply Now</span>
+          <a href="<?= get_field("event_url"); ?>" class="common-button">
+            <span class="text">運営者ページ</span>
           </a>
 
       </div>

@@ -17,10 +17,11 @@ handle_frontend_post_create([
   'meta_fields' => [
     'event_text',
     'event_time_schedule',
+    'time_required',
     'event_price',
     'event_price_detail',
-    'review_01',
-    'review_02',
+    'word_from_airstay',
+    'event_url',
     'capacity',
     'english_supported',
     'kid_friendly',
@@ -199,15 +200,14 @@ get_header();
           <textarea name="event_price_detail" rows="10"></textarea>
         </div>
 
-
         <div class="form-item">
-          <label>レビュー 1</label>
-          <textarea name="review_01" rows="5"></textarea>
+          <label>AIRSTAYからひとこと</label>
+          <textarea name="word_from_airstay" rows="3"></textarea>
         </div>
 
         <div class="form-item">
-          <label>レビュー 2</label>
-          <textarea name="review_02" rows="5"></textarea>
+          <label>運営者ページURL</label>
+          <input type="url" name="event_url" placeholder="https://">
         </div>
 
 
