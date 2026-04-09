@@ -95,7 +95,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 <label class="filter-option">
                   <input type="checkbox" name="kid_friendly" value="1"
                     <?php echo $kid_friendly ? 'checked' : ''; ?> />
-                  <span class="filter-option-text">子連れ</span>
+                  <span class="filter-option-text">子連れ可</span>
                 </label>
                 <label class="filter-option">
                   <input type="checkbox" name="group_booking" value="1"
