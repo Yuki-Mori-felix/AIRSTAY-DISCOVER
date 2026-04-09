@@ -189,7 +189,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
           <!-- 編集モード -->
           <h2 class="post-title">イベント情報を編集</h2>
 
-          <form method="post" enctype="multipart/form-data">
+          <form class="editor-mode" method="post" enctype="multipart/form-data">
 
             <div class="form-item">
               <label>タイトル</label>
