@@ -112,9 +112,9 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   <span class="filter-option-text">~10人</span>
                 </label>
                 <label class="filter-option">
-                  <input type="checkbox" name="capacity_range[]" value="11-20"
-                    <?php echo in_array('11-20', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
-                  <span class="filter-option-text">11~20人</span>
+                  <input type="checkbox" name="capacity_range[]" value="10-20"
+                    <?php echo in_array('10-20', $selected_capacity_ranges, true) ? 'checked' : ''; ?> />
+                  <span class="filter-option-text">10~20人</span>
                 </label>
                 <label class="filter-option">
                   <input type="checkbox" name="capacity_range[]" value="20+"
@@ -238,12 +238,12 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   'compare' => '<='
                 ];
                 break;
-              case '11-20':
+              case '10-20':
                 $capacity_conditions[] = [
                   'relation' => 'AND',
                   [
                     'key'     => 'capacity',
-                    'value'   => 11,
+                    'value'   => 10,
                     'type'    => 'NUMERIC',
                     'compare' => '>='
                   ],
