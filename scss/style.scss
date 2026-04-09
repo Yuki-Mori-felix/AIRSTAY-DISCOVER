@@ -282,6 +282,7 @@ section {
 					background: unset;
 					width: 30px;
 					height: 120px;
+          top: 45%;
 					@include tab {
 						width: 14px;
 						height: 56px;
@@ -330,7 +331,7 @@ section {
 
 							.list-textarea {
 								padding: 20px 40px;
-                height: 390px;
+                height: 480px;
 								@include tab {
 									padding: 16px 20px 34px;
 								}
@@ -357,7 +358,7 @@ section {
 									font-size: 16px;
 									margin-bottom: 15px;
                   @include tab {
-                    font-size-adjust: 14px;
+                    font-size: 14px;
                   }
 								}
 
@@ -365,6 +366,9 @@ section {
 									font-size: 16px;
 									color: #1d95d4;
                   margin-bottom: 30px;
+                  @include tab {
+                    margin-bottom: 15px;
+                  }
 								}
 
 								.filter-list {
