@@ -183,7 +183,7 @@ get_header();
         </div>
 
         <!-- ▼ 追加項目：タイムスケジュール -->
-        <div class="form-item">
+        <div class="form-item" style="display: none;">
           <label>タイムスケジュール</label>
           <textarea name="event_time_schedule" rows="10"></textarea>
         </div>

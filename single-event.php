@@ -342,7 +342,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 value="<?= esc_attr(get_post_meta(get_the_ID(), 'time_required', true)); ?>">
             </div>
 
-            <div class="form-item">
+            <div class="form-item" style="display: none;">
               <label>タイムスケジュール</label>
               <textarea name="event_time_schedule" rows="10"><?= esc_textarea(get_post_meta(get_the_ID(), 'event_time_schedule', true)); ?></textarea>
             </div>
@@ -496,7 +496,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                   $schedule = get_post_meta(get_the_ID(), 'event_time_schedule', true);
                   if (!empty($schedule)):
                   ?>
-                    <div class="event_time_schedule">
+                    <div style="display: none;" class="event_time_schedule">
                       <?= nl2br(auto_link_text($schedule)); ?>
                     </div>
                   <?php endif; ?>
