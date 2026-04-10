@@ -27,7 +27,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         <div class="part-search-wrap">
           <h1>DISCOVER THE HEART <br class="sp-visible">OF JAPAN</h1>
           <p>Immerse yourself in authentic rituals <br class="sp-visible">and local crafts.</p>
-          <form method="get" action="/">
+          <form method="get" action="<?= $home_url; ?>/event/">
             <div class="search-box">
               <input type="text" id="event_search" name="s" placeholder="Search activities and destinations" required>
               <input type="hidden" name="post_type" value="event">

@@ -231,12 +231,23 @@ add_filter('posts_where', 'event_search_include_taxonomies', 10, 2);
 ============================================================ */
 function search_only_event($query)
 {
-  if (!is_admin() && $query->is_search()) {
+  if (!is_admin() && $query->is_main_query() && $query->is_search()) {
     $query->set('post_type', 'event');
-    $query->set('posts_per_page', -1);
   }
 }
 add_action('pre_get_posts', 'search_only_event');
+
+function use_archive_event_for_event_search($template)
+{
+  if (!is_admin() && is_search() && get_query_var('post_type') === 'event') {
+    $archive_template = locate_template('archive-event.php');
+    if ($archive_template) {
+      return $archive_template;
+    }
+  }
+  return $template;
+}
+add_filter('template_include', 'use_archive_event_for_event_search');
 
 
 /* ============================================================

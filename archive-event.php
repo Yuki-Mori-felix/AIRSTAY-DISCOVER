@@ -27,6 +27,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         $allowed_sorts = ['new', 'price', 'time'];
         $sort = isset($_GET['sort']) && in_array($_GET['sort'], $allowed_sorts, true) ? sanitize_text_field($_GET['sort']) : 'new';
 
+        $search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
         $selected_types = isset($_GET['filter_type']) ? array_map('intval', (array) $_GET['filter_type']) : [];
         $type_terms = get_terms([
           'taxonomy'   => 'type',
@@ -64,6 +65,9 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         }
         if (!empty($selected_time_ranges)) {
           $current_filter_args['time_range'] = $selected_time_ranges;
+        }
+        if ($search_keyword) {
+          $current_filter_args['s'] = $search_keyword;
         }
         ?>
 
@@ -157,6 +161,9 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                 </label>
               </div>
 
+              <?php if ($search_keyword): ?>
+                <input type="hidden" name="s" value="<?php echo esc_attr($search_keyword); ?>" />
+              <?php endif; ?>
               <input type="hidden" name="sort" value="<?php echo esc_attr($sort); ?>" />
               <button type="submit" class="filter-button">検索結果を表示</button>
             </form>
@@ -190,6 +197,10 @@ require TEMPLATEPATH . '/inc/my_variables.php';
           'posts_per_page' => 15,   // ← ★ここで1ページあたりの表示数を自由に変更
           'paged'          => $paged,
         ];
+
+        if ($search_keyword) {
+          $args['s'] = $search_keyword;
+        }
 
         if (!empty($selected_types)) {
           $args['tax_query'] = [
@@ -485,6 +496,9 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             }
             if ($group_booking) {
               $pagination_add_args['group_booking'] = $group_booking;
+            }
+            if ($search_keyword) {
+              $pagination_add_args['s'] = $search_keyword;
             }
             if (!empty($selected_capacity_ranges)) {
               $pagination_add_args['capacity_range'] = $selected_capacity_ranges;
