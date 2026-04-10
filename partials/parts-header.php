@@ -29,7 +29,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
           <div class="header-menu-search">
             <form method="get" action="<?= $home_url; ?>/event/">
               <div class="search-box">
-                <input type="text" id="event_search" name="s" placeholder="Search activities and destinations" required>
+                <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
                 <input type="hidden" name="post_type" value="event">
                 <button type="submit">search</button>
               </div>
@@ -77,7 +77,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
     <div class="sp-nav-search">
       <form method="get" action="<?= $home_url; ?>/event/">
         <div class="search-box">
-          <input type="text" id="event_search" name="s" placeholder="Search activities and destinations" required>
+          <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
           <input type="hidden" name="post_type" value="event">
           <button type="submit">search</button>
         </div>
