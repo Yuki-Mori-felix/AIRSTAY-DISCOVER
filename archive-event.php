@@ -546,6 +546,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
         <?php else: ?>
           <div class="no-results-message">No experiences matched your search.</div>
+          <a href="<?= $home_url ?>/event/" class="back-link">Back to All Experiences</a>
         <?php endif; ?>
       </div>
     </section>
