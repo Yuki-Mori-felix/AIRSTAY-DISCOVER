@@ -784,14 +784,18 @@ button {
 /*______________ 投稿更新時ポップアップ ______________*/
 .update-popup {
 	position: fixed;
-	top: 20px;
-	right: 20px;
+	top: 20%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
 	background: #4caf50;
 	color: #fff;
 	padding: 12px 18px;
 	border-radius: 6px;
-	font-size: 14px;
-	z-index: 9999;
+	font-size: 16px;
+	z-index: 99999;
 	opacity: 0;
 	animation: fadeInOut 3s forwards;
 }
