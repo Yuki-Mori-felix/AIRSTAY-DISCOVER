@@ -17,7 +17,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
         <a href="<?= $home_url ?>/">Home</a>
       </li>
       <li class="footer-item">
-        <a href="<?= $home_url ?>/event/">Experiences</a>
+        <a href="<?= $home_url ?>/experiences/">Experiences</a>
       </li>
       <!-- <li class="footer-item">
         <a href="">Operating Company</a>

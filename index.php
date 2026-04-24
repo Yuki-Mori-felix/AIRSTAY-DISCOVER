@@ -27,7 +27,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         <div class="part-search-wrap">
           <h1>DISCOVER THE HEART <br class="sp-visible">OF JAPAN</h1>
           <p>Immerse yourself in authentic rituals <br class="sp-visible">and local crafts.</p>
-          <form method="get" action="<?= $home_url; ?>/event/">
+          <form method="get" action="<?= $home_url; ?>/experiences/">
             <div class="search-box">
               <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
               <input type="hidden" name="post_type" value="event">
@@ -45,37 +45,37 @@ require TEMPLATEPATH . '/inc/my_variables.php';
         <h2 class="sec-title">Popular Categories</h2>
         <ul class="category-list">
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=10&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=10&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category.png" alt="">
               <div class="category-name">Adventure & Sports</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=19&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=19&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-02.png" alt="">
               <div class="category-name">History & Architecture</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=20&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=20&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-03.png" alt="">
               <div class="category-name">Nature & Outdoors</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=21&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=21&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-04.png" alt="">
               <div class="category-name">Art & Craftsmanship</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=22&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=22&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-05.png" alt="">
               <div class="category-name">Eat & Drink Authentic</div>
             </a>
           </li>
           <li class="category-item">
-            <a href="<?= $home_url; ?>/event/?filter_type%5B%5D=23&sort=new">
+            <a href="<?= $home_url; ?>/experiences/?filter_type%5B%5D=23&sort=new">
               <img class="category-img" src="<?= $img_path; ?>/test/category-06.png" alt="">
               <div class="category-name">Local Lifestyle & Etiquette</div>
             </a>
@@ -379,7 +379,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
         </ul>
 
-        <a href="<?= $home_url ?>/event/" class="common-button">
+        <a href="<?= $home_url ?>/experiences/" class="common-button">
           <p class="text">Explore All Experiences</p>
         </a>
 

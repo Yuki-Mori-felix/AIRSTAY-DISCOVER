@@ -60,10 +60,10 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             <?php endwhile; ?>
           </ul>
         <?php else: ?>
-          <p>No events matched your search.</p>
+          <p>No experiences matched your search.</p>
         <?php endif; ?>
 
-        <a href="<?= home_url(); ?>/event/" class="back-link">Back to All Experiences</a>
+        <a href="<?= home_url(); ?>/experiences/" class="back-link">Back to All Experiences</a>
       </div>
     </section>
   </main>

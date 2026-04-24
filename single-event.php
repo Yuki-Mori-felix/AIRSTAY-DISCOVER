@@ -550,7 +550,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
 
     <?php endif; ?>
 
-    <a href="<?= $home_url ?>/event/" class="back-link">Back to All Experiences</a>
+    <a href="<?= $home_url ?>/experiences/" class="back-link">Back to All Experiences</a>
     </div>
     </section>
 

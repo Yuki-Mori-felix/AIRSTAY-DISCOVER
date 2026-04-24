@@ -14,7 +14,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
     <div class="header-menu">
       <ul>
         <li>
-          <a href="<?= $home_url; ?>/event/">
+          <a href="<?= $home_url; ?>/experiences/">
             <img class="header-menu-img" src="<?= $img_path; ?>/h-menu-act.png" alt="">
             <img class="header-menu-img-hover" src="<?= $img_path; ?>/h-menu-act-hover.png" alt="">
             <p>Activities</p>
@@ -27,7 +27,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
             <p>Search</p>
           </a>
           <div class="header-menu-search">
-            <form method="get" action="<?= $home_url; ?>/event/">
+            <form method="get" action="<?= $home_url; ?>/experiences/">
               <div class="search-box">
                 <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
                 <input type="hidden" name="post_type" value="event">
@@ -59,7 +59,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
         <h3><a href="<?= $home_url; ?>/">Home</a></h3>
       </li>
       <li class="sp-nav-item">
-        <h3><a href="<?= $home_url; ?>/event/">Experiences</a></h3>
+        <h3><a href="<?= $home_url; ?>/experiences/">Experiences</a></h3>
       </li>
       <!-- <li class="sp-nav-item">
         <h3><a href="<?= $home_url; ?>/">Operating Company</a></h3>
@@ -75,7 +75,7 @@ include TEMPLATEPATH . '/inc/my_variables.php';
       </li> -->
     </ul>
     <div class="sp-nav-search">
-      <form method="get" action="<?= $home_url; ?>/event/">
+      <form method="get" action="<?= $home_url; ?>/experiences/">
         <div class="search-box">
           <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
           <input type="hidden" name="post_type" value="event">
