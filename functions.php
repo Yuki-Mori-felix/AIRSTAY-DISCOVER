@@ -119,7 +119,7 @@ function handle_frontend_post_status()
 
     // リダイレクト
     if ($post_type === 'event') {
-      wp_redirect(home_url('/event/'));
+      wp_redirect(home_url('/experiences/'));
     } else {
       wp_redirect(home_url('/'));
     }
@@ -146,7 +146,7 @@ function handle_frontend_post_status()
     // リダイレクト（一覧へ戻す）
     $post_type = get_post_type($post_id);
     if ($post_type === 'event') {
-      wp_redirect(home_url('/event/'));
+      wp_redirect(home_url('/experiences/'));
     } else {
       wp_redirect(home_url('/'));
     }
