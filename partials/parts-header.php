@@ -4,7 +4,9 @@ include TEMPLATEPATH . '/inc/my_variables.php';
 
 <header id="header">
   <div class="header-wrap">
-    <div class="language"><?php echo do_shortcode('[linguise]'); ?></div>
+    <?php if (!is_user_logged_in()): ?>
+      <div class="language"><?php echo do_shortcode('[linguise]'); ?></div>
+    <?php endif; ?>
     <div class="header-logo">
       <a href="<?= $home_url; ?>/">
         <img src="<?= $img_path ?>/logo.png" alt="AIRSTAY DISCOVER">
