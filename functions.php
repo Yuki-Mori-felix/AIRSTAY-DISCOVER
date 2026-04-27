@@ -241,6 +241,28 @@ function search_only_event($query)
 }
 add_action('pre_get_posts', 'search_only_event');
 
+/* ============================================================
+  検索結果ページ全てを/experiences/で表示させる
+============================================================ */
+function redirect_search_to_experiences()
+{
+  // 管理画面は除外
+  if (is_admin()) {
+    return;
+  }
+
+  // 通常の検索ページ（/?s=xxx）に来た場合のみ処理
+  if (is_search() && !is_post_type_archive('event')) {
+    $keyword = get_search_query();
+
+    // /experiences/?s=xxx にリダイレクト
+    $redirect_url = home_url('/experiences/?s=' . urlencode($keyword));
+    wp_redirect($redirect_url, 301);
+    exit;
+  }
+}
+add_action('template_redirect', 'redirect_search_to_experiences');
+
 
 /* ============================================================
   パンくずリスト
