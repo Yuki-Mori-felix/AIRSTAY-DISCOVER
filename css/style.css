@@ -2039,11 +2039,38 @@ section {
 
 .sec-categories {
   background: white;
+  padding-top: 55px;
+}
+.sec-categories .wrap {
+  max-width: 1360px;
+  position: relative;
+}
+@media screen and (min-width: 1101px) {
+  .sec-categories .wrap .sec-title {
+    position: absolute;
+    left: 50%;
+    top: -120px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    background: white;
+    padding: 20px 120px;
+    white-space: nowrap;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 0;
+  }
+  .sec-categories .wrap .sec-title::after {
+    bottom: 0;
+  }
 }
 .sec-categories .wrap .category-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: min(20px, 1vw);
+}
+@media screen and (max-width: 1100px) {
+  .sec-categories .wrap .category-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media screen and (max-width: 820px) {
   .sec-categories .wrap .category-list {
@@ -2066,7 +2093,7 @@ section {
 .sec-categories .wrap .category-list .category-item .category-name {
   font-family: Montserrat;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   color: #333;
 }
