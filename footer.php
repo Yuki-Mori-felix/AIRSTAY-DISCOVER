@@ -47,6 +47,9 @@ include TEMPLATEPATH . '/inc/my_variables.php';
   <?php if (current_user_can('editor') || current_user_can('administrator')): ?>
     <a class="create-button" href="<?= $home_url ?>/create-event/">イベント情報を作成</a>
   <?php endif; ?>
+  <?php if (current_user_can('editor') || current_user_can('administrator')): ?>
+    <a class="create-button" href="<?= $home_url ?>/experiences/">イベント一覧ページ</a>
+  <?php endif; ?>
   <?php if (current_user_can('editor')): ?>
     <a href="<?php echo wp_logout_url(home_url('editor-login')); ?>" class="logout-button">ログアウト</a>
   <?php endif; ?>
