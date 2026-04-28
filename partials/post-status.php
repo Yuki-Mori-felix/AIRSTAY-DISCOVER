@@ -17,6 +17,8 @@ $delete_nonce = wp_create_nonce('delete_post_' . $post_id);
       <?= ($status === 'publish') ? '非公開にする' : '公開する'; ?>
     </a>
 
+    <a class="status-button edit-button" href="<?= the_permalink() ?>">編集する</a>
+
     <!-- 削除ボタン -->
     <a class="status-button delete-button"
       href="<?= home_url('/delete-post'); ?>?action=delete_post&id=<?= $post_id; ?>&nonce=<?= $delete_nonce; ?>"

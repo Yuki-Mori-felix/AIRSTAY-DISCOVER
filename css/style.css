@@ -2699,6 +2699,10 @@ section {
   background: -webkit-gradient(linear, left top, left bottom, from(#e53935), to(#c62828));
   background: linear-gradient(to bottom, #e53935 0%, #c62828 100%);
 }
+.event-list .list-item .status-button-area .edit-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#9e9e9e), to(#757575));
+  background: linear-gradient(to bottom, #9e9e9e 0%, #757575 100%);
+}
 
 .form-item {
   display: grid;
