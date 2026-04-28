@@ -135,7 +135,7 @@ function handle_frontend_post_create($args)
 
   // 投稿タイプごとに一覧ページへリダイレクト
   if ($post_type === 'event') {
-    wp_redirect(home_url('/event/'));
+    wp_redirect(home_url('/experiences/'));
   } else {
     wp_redirect(get_permalink($post_id));
   }
