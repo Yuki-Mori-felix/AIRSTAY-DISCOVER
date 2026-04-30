@@ -177,7 +177,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
             </svg>
             フィルター
           </div>
-  
+
           <div class="sort-area">
             <?php foreach ($sort_labels as $sort_key => $sort_label): ?>
               <a class="sort-link<?php echo $sort === $sort_key ? ' current' : ''; ?>"
@@ -437,9 +437,22 @@ require TEMPLATEPATH . '/inc/my_variables.php';
                     </div>
                   <?php endif; ?>
 
-                  <div class="list-title">
-                    <?= the_title(); ?>
-                  </div>
+                  <?php
+                  $title = get_the_title();
+                  $limit = 80;
+
+                  if (mb_strlen($title) > $limit) {
+                    $title = mb_substr($title, 0, $limit) . '...';
+                  }
+
+                  $event_text = get_field('event_text');
+                  $text_limit = 140;
+
+                  if (mb_strlen($event_text) > $text_limit) {
+                    $event_text = mb_substr($event_text, 0, $text_limit) . '...';
+                  }
+                  ?>
+                  <div class="list-title"><?= $title; ?></div>
                   <?php
                   $event_text = get_field('event_text');
                   $text_limit = 140;
