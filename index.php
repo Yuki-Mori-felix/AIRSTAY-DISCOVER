@@ -26,7 +26,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
       <div class="part-search">
         <div class="part-search-wrap">
           <h1>DISCOVER THE HEART <br class="sp-visible">OF JAPAN</h1>
-          <p>Immerse yourself in authentic rituals <br class="sp-visible">and local crafts.</p>
+          <p>Immerse yourself in <br class="only-sp">authentic rituals <br class="sp-visible">and local crafts.</p>
           <form method="get" action="<?= $home_url; ?>/experiences/">
             <div class="search-box">
               <input type="text" id="event_search" name="s" placeholder="Search activities and destinations">
@@ -34,7 +34,7 @@ require TEMPLATEPATH . '/inc/my_variables.php';
               <button type="submit">search</button>
             </div>
           </form>
-          <div class="badge"><span class="badge-text">AIRSTAY host recommendation</span></div>
+          <div class="badge"><img class="badge-img" src="<?= $img_path ?>/top/airstay_badge.webp" alt=""></div>
         </div>
       </div>
     </section>

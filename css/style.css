@@ -1885,101 +1885,129 @@ section {
 @media screen and (max-width: 820px) {
   .sec-mv .part-search {
     top: 103px;
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search {
+    max-width: 340px;
   }
 }
 .sec-mv .part-search .part-search-wrap {
+  position: relative;
   max-width: 950px;
   margin-inline: auto;
 }
-.sec-mv .part-search h1 {
+.sec-mv .part-search .part-search-wrap h1 {
   font-family: "Cormorant Garamond";
   font-weight: bold;
   font-size: clamp(2rem, 1.095rem + 3.86vw, 3.75rem);
-  text-align: center;
   color: #fff;
   text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   line-height: 1;
-  margin-bottom: 62px;
+  margin-bottom: 32px;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search h1 {
+  .sec-mv .part-search .part-search-wrap h1 {
     font-size: 32px;
     line-height: 1.2;
     margin-bottom: 30px;
   }
 }
-.sec-mv .part-search p {
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap h1 {
+    margin-bottom: 13px;
+  }
+}
+.sec-mv .part-search .part-search-wrap p {
   font-family: Montserrat;
   font-weight: normal;
-  font-size: clamp(0.938rem, 0.582rem + 1.52vw, 1.625rem);
-  text-align: center;
+  font-size: 23px;
   color: #fff;
   text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  margin-bottom: 78px;
+  margin-bottom: 50px;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search p {
+  .sec-mv .part-search .part-search-wrap p {
     font-size: 15px;
     line-height: 1.5;
     margin-bottom: 45px;
   }
 }
-.sec-mv .part-search .search-box {
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap p {
+    margin-bottom: 40px;
+  }
+}
+.sec-mv .part-search .part-search-wrap p .only-sp {
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap p .only-sp {
+    display: block;
+  }
+}
+.sec-mv .part-search .part-search-wrap .search-box {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  max-width: 684px;
-  margin-inline: auto;
+  width: 75%;
+  max-width: 644px;
+  margin-inline: 0 auto;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search .search-box {
+  .sec-mv .part-search .part-search-wrap .search-box {
     max-width: 500px;
+    width: 100%;
   }
 }
 @media screen and (max-width: 500px) {
-  .sec-mv .part-search .search-box {
+  .sec-mv .part-search .part-search-wrap .search-box {
     max-width: 345px;
   }
 }
-.sec-mv .part-search .search-box input[type=text] {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text] {
   font-size: clamp(0.875rem, 0.552rem + 1.38vw, 1.5rem);
   border: none;
-  width: 684px;
+  width: 644px;
   height: 90px;
-  border-radius: 45px;
+  border: 2px solid #1d95d4;
+  border-radius: 10px;
   background: #fff;
   -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
           box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   padding-inline: 40px;
 }
-.sec-mv .part-search .search-box input[type=text]::-webkit-input-placeholder {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text]::-webkit-input-placeholder {
   color: #b5b5b5;
 }
-.sec-mv .part-search .search-box input[type=text]::-moz-placeholder {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text]::-moz-placeholder {
   color: #b5b5b5;
 }
-.sec-mv .part-search .search-box input[type=text]:-ms-input-placeholder {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text]:-ms-input-placeholder {
   color: #b5b5b5;
 }
-.sec-mv .part-search .search-box input[type=text]::-ms-input-placeholder {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text]::-ms-input-placeholder {
   color: #b5b5b5;
 }
-.sec-mv .part-search .search-box input[type=text]::placeholder {
+.sec-mv .part-search .part-search-wrap .search-box input[type=text]::placeholder {
   color: #b5b5b5;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search .search-box input[type=text] {
+  .sec-mv .part-search .part-search-wrap .search-box input[type=text] {
     height: 50px;
-  }
-}
-@media screen and (max-width: 500px) {
-  .sec-mv .part-search .search-box input[type=text] {
+    border-radius: 45px;
+    border: none;
     padding-inline: 20px;
   }
 }
-.sec-mv .part-search .search-box button {
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap .search-box input[type=text] {
+    padding-inline: 20px;
+  }
+}
+.sec-mv .part-search .part-search-wrap .search-box button {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -2001,7 +2029,7 @@ section {
   border-radius: 50px;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search .search-box button {
+  .sec-mv .part-search .part-search-wrap .search-box button {
     font-size: 13px;
     padding: 16px 20px;
     top: 10px;
@@ -2011,29 +2039,33 @@ section {
     white-space: nowrap;
   }
 }
-.sec-mv .part-search .badge {
-  width: 254px;
-  height: 28px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  margin-top: 80px;
-  margin-inline: auto;
+.sec-mv .part-search .part-search-wrap .badge {
+  position: absolute;
+  top: 30%;
+  right: 0;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search .badge {
-    margin-top: 34px;
+  .sec-mv .part-search .part-search-wrap .badge {
+    top: 15%;
   }
 }
-.sec-mv .part-search .badge .badge-text {
-  display: block;
-  font-size: 15px;
-  line-height: 28.8px;
-  text-align: center;
-  color: #fff;
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap .badge {
+    top: 25%;
+  }
+}
+.sec-mv .part-search .part-search-wrap .badge .badge-img {
+  width: min(230px, 23vw);
+  opacity: 1;
 }
 @media screen and (max-width: 820px) {
-  .sec-mv .part-search .badge .badge-text {
-    font-size: 12px;
+  .sec-mv .part-search .part-search-wrap .badge .badge-img {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sec-mv .part-search .part-search-wrap .badge .badge-img {
+    width: 100px;
   }
 }
 
@@ -2045,7 +2077,7 @@ section {
   max-width: 1360px;
   position: relative;
 }
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 821px) {
   .sec-categories .wrap .sec-title {
     position: absolute;
     left: 50%;
@@ -2664,7 +2696,7 @@ section {
 .event-list .list-item .post-link .filter-list .filter-item {
   font-size: 12px;
   color: #333;
-  background: #EBEBEB;
+  background: #ebebeb;
   padding: 2px 12px;
   border-radius: 50px;
 }
